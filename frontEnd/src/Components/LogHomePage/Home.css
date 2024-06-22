@@ -1,0 +1,275 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Assistant&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
+html{
+    font-size: 62.5%;
+}
+
+
+
+
+   /* Body Part ////////////////////////////////////////////*/
+
+   /* Carousel images */
+  .carousel{
+    display: flex;
+    justify-content: space-between;
+    border-radius: .5rem;
+    align-content: center;
+   
+    height: inherit;
+    width: 98%;
+    height: 65rem;
+    margin:1rem  1rem;
+    object-fit: cover;
+  }
+
+   /* First image tag */
+   .Main-img{
+    display: flex;
+    justify-content: space-between;
+    border-radius: .5rem;
+    align-content: center;
+   
+    height: inherit;
+    width: 133rem;
+    height: 65rem;
+    /* background-color: rgb(0, 0, 0); */
+    /* padding: 0 20px; */
+    /* box-shadow: 0px 2px 5px #999; */
+
+   }
+
+   .main-image img {
+    border: .2rem solid black;
+    border-radius: 1rem;
+    /* margin-top: 14rem; */
+    margin:auto  1rem;
+    object-fit: cover;
+    /* margin-right: auto; */
+  }
+
+  /* Write on the top of an image */
+  .main-image::before {
+    content: "We Provide Solution For Agriculture Waste";
+    font-family: 'Assistant', sans-serif;
+    position: absolute;
+    color: rgb(0, 0, 0); /* or any color */
+    font-size: 7rem; /* or any font size */
+    top: 21.6rem; /* position from top of the image */
+    left: 90.8rem; /* position from left of the image */
+    width:42rem; /*this is to make it responsive*/
+  }
+
+
+
+  /* spaceee*/
+  .space{
+    margin: 17rem;
+}
+.space1{
+    margin: 11rem;
+}
+
+
+/* service button css */
+
+.service-container{
+  background-color: antiquewhite;
+  height: 7rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+  /* next text and image side by side content*/
+  /* Data Container */
+
+  .datacontainer{
+    /* overflow:scroll ; */
+    display: flex;
+    border: .2rem solid black;
+    width: 100%;
+    background-color: rgb(235, 235, 220);
+    /* margin-top: 100px; */
+    padding: 5rem;
+  }
+  .piechartcss{
+    width: 10rem;
+    /* margin: 10rem; */
+    padding: 5rem;
+  }
+.text-head{
+  font-family: 'Anton', sans-serif;
+  font-stretch: expanded;
+  font-size:x-large;
+  /* font-style:oblique; */
+  line-height: 3.5rem;
+}
+  .text-container{
+    padding: 3rem;
+    font-size: 1.5rem;
+  }
+  /* .text-Contant{
+    font-size: 16rem;
+  } */
+  
+  .image1{
+    height: 30rem;
+  }
+
+  .image2{
+    height: 30rem;
+  }
+  .image3{
+    height: 30rem;
+  }
+
+
+
+  /* Contact & about us page */
+  #contact{
+    background-color: rgb(165 128 0 / 10%);
+    padding: 20rem;
+  }
+
+  #about{
+    background-color: black;
+    color: white;
+    font-family: 'Assistant','Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding: 20rem;
+  }
+
+
+  /* Learn more button */
+  button {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    outline: none;
+    border: 0;
+    vertical-align: middle;
+    text-decoration: none;
+    background: transparent;
+    padding: 0;
+    font-size: inherit;
+    font-family: inherit;
+   }
+   
+   button.learn-more {
+    width: 12rem;
+    height: 2.5rem;
+   }
+   
+   button.learn-more .circle {
+    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+    position: relative;
+    display: block;
+    margin: 0;
+    width: 3rem;
+    height: 3rem;
+    background: #282936;
+    border-radius: 1.625rem;
+   }
+   
+   button.learn-more .circle .icon {
+    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    background: #fff;
+   }
+   
+   button.learn-more .circle .icon.arrow {
+    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+    left: 0.625rem;
+    width: 1.125rem;
+    height: 0.125rem;
+    background: none;
+   }
+   
+   button.learn-more .circle .icon.arrow::before {
+    position: absolute;
+    content: "";
+    top: -0.29rem;
+    right: 0.0625rem;
+    width: 0.625rem;
+    height: 0.625rem;
+    border-top: 0.125rem solid #fff;
+    border-right: 0.125rem solid #fff;
+    transform: rotate(45deg);
+   }
+   
+   button.learn-more .button-text {
+    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+    position: absolute;
+    top: 0;
+    left: 0.20rem;
+    right: 0;
+    bottom: 0;
+    padding: .2rem 0;
+    margin: 0 -1.4rem 0 2.5rem;
+    color: #282936;
+    font-weight: 700;
+    line-height: 1.9;
+    text-align: center;
+    text-transform: uppercase;
+   }
+   
+   button:hover .circle {
+    width: 120%;
+   }
+   
+   button:hover .circle .icon.arrow {
+    background: #fff;
+    transform: translate(1rem, 0);
+   }
+   
+   button:hover .button-text {
+    color: #fff;
+   }
+
+  /* @media(min-width:1900px){
+    html{ 
+      font-size: 255%;
+
+    }
+  } */
+  @media(min-width:1600px){
+    html{ 
+      font-size: 75%;
+
+    }
+  }
+  @media(max-width:412px){
+    html{ 
+      font-size: 50%;
+
+    }
+  }
+  @media(max-width:380px){
+    html{ 
+      font-size: 50%;
+
+    }
+  }
+  @media(max-width:300px){
+    html{ 
+      font-size: 30%;
+
+    }
+  }
+  @media(max-width:200px){
+    html{ 
+      font-size: 20%;
+
+    }
+  }
+  @media(max-width:140px){
+    html{ 
+      font-size: 10%;
+
+    }
+  }

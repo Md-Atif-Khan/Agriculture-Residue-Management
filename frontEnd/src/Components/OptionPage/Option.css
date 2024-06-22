@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Assistant&display=swap');
+
+html{
+    font-size: 62.5%;
+}
+
+
+.he{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50rem;
+}
+
+.container1 {
+  /* height: 100vh; */
+  cursor: pointer;
+    margin: 5rem;
+    width: 23rem;
+    height: 30.4rem;
+    background: transparent;
+    position: relative;
+    box-shadow: 0rem 0rem 2rem rgba(0, 0, 0, 0.438);
+    overflow: hidden;
+    border-radius: 1rem;
+  }
+  
+  .card {
+    cursor: default;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3.4rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    color: #212121;
+    background-color: rgba(255, 255, 255, 0.074);
+    /* border: 1px solid rgba(255, 255, 255, 0.222); */
+    -webkit-backdrop-filter: blur(2rem);
+    backdrop-filter: blur(2rem);
+    border-radius: 1rem;
+    transition: all ease .4s;
+  }
+  
+  .container1::after,
+  .container1::before {
+    width: 10rem;
+    height: 10rem;
+    content: '';
+    position: absolute;
+    /* border-radius: 50%; */
+    transition: .5s linear;
+  }
+  
+  .container1::after {
+    top: -2rem;
+    left: -2rem;
+    background-color: rgba(125, 214, 66, 0.603);
+    animation: animFirst 5s linear infinite;
+  }
+  
+  .container1::before {
+    background-color: rgb(226, 223, 54);
+    top: 70%;
+    left: 70%;
+    animation: animSecond 5s linear infinite;
+    animation-delay: 3s;
+  }
+  
+  .container1:hover {
+    box-shadow: 0rem 0rem 1rem rgba(0, 77, 32, 0.432)
+  }
+  
+  .container1:hover::after {
+    left: 15rem;
+    transform: scale(1.2);
+  }
+  
+  .container1:hover::before {
+    left: 0rem;
+    transform: scale(1.2);
+  }
+  /* @media(min-width:1600px){
+    html{ 
+      font-size: 75%;
+
+    }
+  }
+  @media(max-width:412px){
+    html{ 
+      font-size: 50%;
+
+    }
+  }
+  @media(max-width:350px){
+    html{ 
+      font-size: 45%;
+
+    }
+  }
+  @media(max-width:300px){
+    html{ 
+      font-size: 30%;
+
+    }
+  }
+  @media(max-width:200px){
+    html{ 
+      font-size: 20%;
+
+    }
+  }
+  @media(max-width:140px){
+    html{ 
+      font-size: 10%;
+
+    }
+  } */
