@@ -1,0 +1,266 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Poppins:wght@400;500;600&display=swap');
+*{
+  /* margin: 0;
+  padding: 0;
+  box-sizing: border-box; */
+  font-family: "Poppins", sans-serif;
+}
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Assistant&display=swap');
+
+html{
+    font-size: 50%;
+}
+
+
+
+.CreateRoom {
+    appearance: none;
+    background-color: transparent;
+    border: 0.125rem solid #1A1A1A;
+    border-radius: 0.9375rem;
+    box-sizing: border-box;
+    color: #3B3B3B;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    font-size: 1.6rem;
+    font-weight: 600;
+    line-height: normal;
+    margin: 0;
+    min-height: 3.75rem;
+    min-width: 0;
+    outline: none;
+    padding: 1rem 2.3rem;
+    text-align: center;
+    text-decoration: none;
+    transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    will-change: transform;
+   margin-left: 45%;
+   
+   }
+   
+   .CreateRoom:disabled {
+    pointer-events: none;
+   }
+   
+   .CreateRoom:hover {
+    color: #fff;
+    background-color: #1A1A1A;
+    box-shadow: rgba(0, 0, 0, 0.25) 0 0.8rem 1.5rem;
+    transform: translateY(-0.2rem);
+   }
+   
+   .CreateRoom:active {
+    box-shadow: none;
+    transform: translateY(0);
+   }
+/* //////// */
+.centerA{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40rem;
+  background: white;
+  border-radius: 2rem;
+  box-shadow: 1rem 1rem 1.5rem rgba(0,0,0,0.05);
+}
+/* .center h1{
+  text-align: center; 
+  text-decoration-color: #e9f4fb;
+  padding: 0.2rem 0rem;
+  border-bottom: 0.1rem solid rgb(90, 180, 210);
+  background-color: #1a4664;
+  color: aliceblue;
+} */
+
+/* .cardforlist {
+  width: 25rem;
+  height: 13.4rem;
+  margin: 0rem auto;
+  background-color: #ffffff;
+  border-radius: 1.8rem;
+  z-index: 1;
+ }
+ .card_content{
+  color: #ffffff;
+  font-size: 1.2rem;
+ }
+ .oneline{
+  margin:.5rem;
+  padding: 0.5rem;
+ }
+ .tools {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+ }
+ 
+ /* .circle {
+  padding: 0 .1rem;   
+ } */
+ 
+ /* .box {
+  display: inline-block;
+  align-items: center;
+  width: 1rem;
+  height: 1rem;
+  padding: 1rem;   
+  border-radius: 50%;
+ }
+ 
+ .red {
+  color: #ff605c;
+  font-size: 1.6rem;
+ }  */
+
+
+
+
+
+/* service list css */
+.list-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 25px;
+  flex-wrap:nowrap;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  /* flex-direction: row; */
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.list li {
+  margin-bottom: 10px;
+  padding: 10px;
+  /* border: 1px solid #ccc; */
+  /* border-radius: 5px;   */
+}
+
+.list li:hover {
+  background-color: #f5f5f5;
+  cursor: pointer;
+}
+
+.list li button {
+  background-color: transparent;
+  border: none;
+  color: #007bff;
+  font-size: 16px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.list li button:hover {
+  text-decoration: none;
+}
+/* .list-container{ */
+  /* display: flex;
+} */
+.cardReq {
+  width: 80%;
+  height: 20rem;
+  border-radius: 4px;
+  background: #212121;
+  display: flex;
+  gap: 5px;
+  padding: .4em;
+}
+
+
+.cardReq button {
+  height: 100%;
+  width: 100px;
+  flex: 1;
+  overflow: hidden;
+  cursor: pointer;
+  border-radius: 20px;
+  transition: all .5s;
+  background: #212121;
+  border: 1px solid #ff5a91;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+}
+
+.cardReq button:hover {
+  flex:content;
+}
+
+.cardReq button li {
+  padding: 10%;
+  text-align: center;
+  transform: rotate(0deg);
+  transition: all .5s;
+  text-transform: uppercase;
+  color: #ff568e;
+  letter-spacing: .1em;
+  -webkit-transition: all .5s;
+  -moz-transition: all .5s;
+  -ms-transition: all .5s;
+  -o-transition: all .5s;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+}
+
+.cardReq button:hover li {
+  transform: rotate(10);
+  -webkit-transform: rotate(10);
+  -moz-transform: rotate(10);
+  -ms-transform: rotate(10);
+  -o-transform: rotate(10);
+}
+
+   /* @media(min-width:1600px){
+    html{ 
+      font-size: 75%;
+
+    }
+  }
+  @media(max-width:412px){
+    html{ 
+      font-size: 50%;
+
+    }
+  }
+  @media(max-width:350px){
+    html{ 
+      font-size: 45%;
+
+    }
+  }
+  @media(max-width:300px){
+    html{ 
+      font-size: 30%;
+
+    }
+  }
+  @media(max-width:200px){
+    html{ 
+      font-size: 20%;
+
+    }
+  }
+  @media(max-width:140px){
+    html{ 
+      font-size: 10%;
+
+    }
+  } */

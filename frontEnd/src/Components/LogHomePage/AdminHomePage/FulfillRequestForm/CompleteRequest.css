@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Assistant&display=swap');
+
+html{
+    font-size: 62.5%;
+}
+
+
+
+.cardforlist {
+    /* width: 45rem;
+    height: 53.4rem; */
+    margin: 0rem auto;
+    background-color: #f0f8ea;
+    border-radius: 1.8rem;
+    z-index: 1;
+   }
+   
+   .card_content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* width: 20%; */
+   }
+   .tools {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+   }
+   
+   /* .circle {
+    padding: 0 .1rem;   
+   } */
+   
+   .box {
+    display: inline-block;
+    align-items: center;
+    /* width: 1rem;
+    height: 1rem;
+    padding: 1rem;    */
+    border-radius: 50%;
+   }
+   
+   .red {
+    color: #ff605c;
+    font-size: 1.6rem;
+   }
+
+
+   .card14 {
+    /* padding-left: 40%; */
+    margin-left: 30%;
+    width: 30rem;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 1rem;
+    overflow: hidden;
+  }
+  
+  .header2 {
+    /* background-color: #333; */
+    /* color: #fff; */
+    /* padding: 20px; */
+    text-align: center;
+    font-size: 1.8rem;
+  }
+  
+  .body2 {
+    padding: 2rem;
+  }
+  
+  .req {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+  
+  .req-name {
+    /* width: 22rem; */
+    font-size: 16px;
+  }
+  
+  
+  
+  
+  
+  .Fulfill {
+    padding: 15px 25px;
+    border: unset;
+    border-radius: 15px;
+    color: #212121;
+    z-index: 1;
+    background: #e8e8e8;
+    position: relative;
+    font-weight: 1000;
+    font-size: 17px;
+    -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+    box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+    transition: all 250ms;
+    overflow: hidden;
+   }
+   
+   .Fulfill button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
+    border-radius: 15px;
+    background-color: #212121;
+    z-index: -1;
+    -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+    box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+    transition: all 250ms
+   }
+   
+  .Fulfill button:hover {
+    color: #e8e8e8;
+   }
+   
+  .Fulfill button:hover::before {
+    width: 100%;
+   }
