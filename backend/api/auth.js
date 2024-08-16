@@ -6,9 +6,9 @@ const jwt = require('jsonwebtoken');
 const auth = require('../middleware/auth')
 const config = require('config');
 const User = require('../models/User');
-const service =require('../models/Service');
-const AuctionModel=require('../models/Auction');
-const ClearedList=require('../models/ClearedList');
+const service = require('../models/Service');
+const AuctionModel = require('../models/Auction');
+const ClearedList = require('../models/ClearedList');
 // const service = require('../models/Service')
 const Admin = require('../models/Admin')
 const { encryption } = require('../middleware/hasing')
@@ -29,7 +29,6 @@ router.get('/', auth, async (req, res) => {
         }
         // else if(Company){
         //     res.status(200).send({ loggedIn: true,UserType:Company });
-
         // }
         else {
             res.status(200).send({ loggedIn: false });
@@ -286,7 +285,7 @@ router.post("/LoginCompany", async (req, res) => {
                 message: `Hello ${company.name}, You Logged in successfully!`,
                 success: true,
                 name: Company.name,
-             
+
             });
 
         } else
@@ -310,7 +309,7 @@ router.post("/LoginAdmin", async (req, res) => {
                 name: admin.name,
                 success: true,
                 message: `Hello ${admin.name}, You Logged in successfully!`,
-                
+
             });
 
         } else
@@ -320,7 +319,7 @@ router.post("/LoginAdmin", async (req, res) => {
     }
 });
 
-router.post("/Service",async (req,res)=>{
+router.post("/Service", async (req, res) => {
     const { email, password } = req.body;
     try {
         // console.log("service req body",req.body); 
@@ -353,7 +352,7 @@ router.post("/Service",async (req,res)=>{
         } else {
             res.status(401).json({ success: false, msg: "you must be a farmer to make request for service!!" })
         }
-        
+
     } catch (err) {
         console.error(err.message)
         res.status(500).send('Server Error');
@@ -382,9 +381,9 @@ router.post('/CreateRoom', async (req, res) => {
             // console.log("Printed",newSer);
             if (createRoom) {
                 let data = await AuctionModel.create({
-                    Bid : req.body.StartBid,
-                    Room : req.body.Code,
-                    User : "Admin"
+                    Bid: req.body.StartBid,
+                    Room: req.body.Code,
+                    User: "Admin"
                 })
                 res.json({ success: true, msg: "successfully Created Room for the Auction.." })
             }
@@ -396,36 +395,36 @@ router.post('/CreateRoom', async (req, res) => {
             //     res.redirect('/');
             // }).catch(err => res.status(300).send(err));
         }
-    
-}catch (err) {
-    console.error(err.message)
-    res.status(500).send('Server Error');
 
-}
+    } catch (err) {
+        console.error(err.message)
+        res.status(500).send('Server Error');
+
+    }
 });
 router.post('/ClearReqForm', async (req, res) => {
     try {
-        console.log("service req body",req.body);
+        console.log("service req body", req.body);
         // const user = await Admin.findOne({email:req.body.email });
-        const Service=await service.findOne({email:req.body.email});
-        console.log(Service+"db service acceass");
+        const Service = await service.findOne({ email: req.body.email });
+        console.log(Service + "db service acceass");
         const ReqExist = req.body.email;
-        console.log(ReqExist+"this is request email");
+        console.log(ReqExist + "this is request email");
         // if(user){
         if (!ReqExist) return res.status(200).send("No such request exists!!!");
         else {
 
             const ClearList = await ClearedList.create({
-                email:req.body.email,
+                email: req.body.email,
                 tResidue: req.body.tResidue,
-        tgrain: req.body.tgrain,
-        sdate: req.body.sdate
+                tgrain: req.body.tgrain,
+                sdate: req.body.sdate
 
                 // userType: req.body.type
             });
-             await Service.remove({
+            await Service.remove({
                 email: req.body.email,
-             
+
 
                 // userType: req.body.type
             });
@@ -441,34 +440,34 @@ router.post('/ClearReqForm', async (req, res) => {
             //     res.redirect('/');
             // }).catch(err => res.status(300).send(err));
         }
-    
-}catch (err) {
-    console.error(err.message)
-    res.status(500).send('Server Error');
 
-}
+    } catch (err) {
+        console.error(err.message)
+        res.status(500).send('Server Error');
+
+    }
 });
 
 
 
-router.post("/AdminHome",async(req,res)=>{
-    try{
+router.post("/AdminHome", async (req, res) => {
+    try {
 
         const room = await RoomModel.find({});
         const service1 = await service.find({});
 
         // console.log("mom",room);
         // console.log("mom",service1);
-        if(room && service1){
-            res.status(200).send({room,service1});
+        if (room && service1) {
+            res.status(200).send({ room, service1 });
         }
-        else{
-            res.status(202).send({message:"Not Found!"});
+        else {
+            res.status(202).send({ message: "Not Found!" });
         }
 
         // res.send({room:"room",service:"Service"});
-    }catch(e){
-        console.log("Error->",e);
+    } catch (e) {
+        console.log("Error->", e);
     }
 })
 

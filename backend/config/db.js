@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
-const config = require('config');
-const db = config.get('mongoURI');
-
+//const config = require('config');
+//const db = config.get('mongoURI');  
+const db = 'mongodb://localhost:27017/stubbleburning';
 // const connectDB = async ()=>{
 //     try{
 //         await mongoose.connect(db,{
@@ -25,10 +25,6 @@ function connectDB(){
         console.log("Error Occured at DB connection ",err);
       });
     const connection = mongoose.connection;
-
-    // connection.once('open', ()=>{
-    //     console.log("DB Connected");
-    // });
 }
     
 

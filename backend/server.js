@@ -2,13 +2,13 @@ const express = require('express');
 const connectDB = require('./config/db');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
-const router =require('./api/auth');
+const router = require('./api/auth');
 // const connect= require('./config/db');
 const bodyParser = require('body-parser');
 // const router = require('./api/auth');
 // var path = require('path')
 // const cors=require('cors');
-const AuctionServer=require('./AuctionServer');
+const AuctionServer = require('./AuctionServer');
 const app = express();
 
 connectDB();
@@ -63,10 +63,10 @@ app.use(cors());
 
 //   res.send(userType);
 // });
-app.use('/',router);
+app.use('/', router);
 
-const PORT =  8000;
-app.listen(PORT,() => console.log(`server started on port ${PORT}`));
+const PORT = 8000;
+app.listen(PORT, () => console.log(`server started on port ${PORT}`));
 
 // const server = require('http').createServer();
 // const io = require('socket.io')(server,{
@@ -90,7 +90,7 @@ app.listen(PORT,() => console.log(`server started on port ${PORT}`));
 //     io.emit('bid', data);
 //   });
 // });
-AuctionPORT = 3000;
+AuctionPORT = 3001;
 AuctionServer.listen(AuctionPORT, () => {
   console.log(`Auction Server is Runnig at port ${AuctionPORT}`);
 });
