@@ -93,13 +93,8 @@ const Home = () => {
                 <div className="space"></div>
  
                 {/* Contact us page */}
-                 <div id="contact"> <Contact/></div>
-
-
-                
+                 <div id="contact"> <Contact/></div>        
                  <div className="space"></div>
-
-
                 {/* AboutUs Page */}
                 <div id="about"> <Aboutus /></div>
 

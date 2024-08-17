@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-// const socket = io('http://localhost:3001');
-import"./Chat.css"
+// const socket = io('http://localhost:8001');
+import"./Chat.css" 
 function AuctionList(props) {
 
   const [newArr , setnewArr] = useState([]);

@@ -20,7 +20,7 @@ const ListContainer = () => {
   //   const [service, setService] = useState();
   //   const getData = async () => {
   //     const request=localStorage.getItem("request");
-  //     const data = await axios.post("http://localhost:5000/AuctionHome")
+  //     const data = await axios.post("http://localhost:8000/AuctionHome")
   // // console.log("requesttttttttt ",request)
   //     if (request) {
   //       // setRoom(data?.data?.room);
@@ -103,15 +103,6 @@ const ListContainer = () => {
           </div>
           {/* </div> */}
           {/* </div> */}
-
-
-
-
-
-
-
-
-
         </div>
       </div>
     </>

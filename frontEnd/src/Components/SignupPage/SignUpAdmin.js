@@ -18,7 +18,7 @@ const SignUpAdmin = () => {
   const Adminsignup = async (e) => {
     e.preventDefault();
     if (Admin.password === Admin.cpassword) {
-      const data = await axios.post('http://localhost:5001/SignUpAdmin', {
+      const data = await axios.post('http://localhost:8000/SignUpAdmin', {
         name: Admin.name,
         mobileno: Admin.mobileno,
         email: Admin.email,

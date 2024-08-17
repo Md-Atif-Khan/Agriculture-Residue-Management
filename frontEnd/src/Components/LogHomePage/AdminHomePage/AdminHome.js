@@ -21,7 +21,7 @@ const AdminHome = () => {
   const [service, setService] = useState();
 
   const getData = async () => {
-    const data = await axios.post("http://localhost:5000/AdminHome")
+    const data = await axios.post("http://localhost:8000/AdminHome")
 
     if (data?.data?.room && data?.data?.service1) {
       setRoom(data?.data?.room);

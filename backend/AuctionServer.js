@@ -1,9 +1,7 @@
 const express = require('express');
-const app = express();
-
+const app = express(); 
 const http = require('http');
 const AuctionServer = http.createServer(app);
-
 const { Server } = require('socket.io');
 const AuctionModel = require('./models/Auction');
 const RoomModel = require('./models/AuctionRoom');
@@ -12,7 +10,7 @@ const io = new Server(AuctionServer, {
   cors: {
     origin: "*",
     methods: ["GET", "POST"],
-    allowedHeaders: ["my-custom-header"],
+    allowedHeaders: ["my-custom-header"], 
     credentials: true
   }
 });
@@ -28,6 +26,7 @@ io.on('connection', (socket) => {
       console.log("Joined Successfully");
       socket.join(data.Code);
       socket.emit("startDetails", room);
+
       const endTime = new Date(room.endDate).getTime();
       const currentTime = new Date().getTime();
 
@@ -39,7 +38,7 @@ io.on('connection', (socket) => {
         if (auctionTimers[data.Code]) {
           clearTimeout(auctionTimers[data.Code]);
         }
-        auctionTimers[data.Code] = this.setTimeout(() => {
+        auctionTimers[data.Code] = setTimeout(() => {
           io.to(data.Code).emit("auction_ended");
           endAuction(data.Code);
         }, timeLeft);
@@ -52,18 +51,19 @@ io.on('connection', (socket) => {
       if (latestBid) {
         socket.emit("curr_bid", latestBid);
       }
+
       let recentBids = await AuctionModel.find({ Room: data.Code }).sort({ _id: -1 }).limit(3);
       socket.emit("bids", recentBids.reverse());
     } else {
       socket.emit("room_error", data.Code);
     }
   });
+
   socket.on('send_bid', async (data) => {
     if (!data.user) {
       socket.emit("auth_error", { msg: "User does not exist!" });
       return;
     }
-
 
     let room = await RoomModel.findOne({ Code: data.Code });
     if (!room || new Date() >= new Date(room.endDate)) {
@@ -73,7 +73,7 @@ io.on('connection', (socket) => {
 
     let latestBid = await AuctionModel.findOne({ Room: data.Code }).sort({ _id: -1 });
     if (!latestBid || latestBid.Bid < data.bid) {
-      let newBid = await AuctionModel.create({ Bid: data.bid, User: data.User, Room: data.Code });
+      let newBid = await AuctionModel.create({ Bid: data.bid, User: data.user, Room: data.Code });
       io.to(data.Code).emit('receive_bid', newBid);
       io.to(data.Code).emit("curr_bid", newBid);
     }
@@ -86,6 +86,7 @@ io.on('connection', (socket) => {
     console.log("User disconnected", socket.id);
   });
 });
+
 function endAuction(roomCode) {
   if (auctionTimers[roomCode]) {
     clearTimeout(auctionTimers[roomCode]);

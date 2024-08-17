@@ -90,7 +90,7 @@ app.listen(PORT, () => console.log(`server started on port ${PORT}`));
 //     io.emit('bid', data);
 //   });
 // });
-AuctionPORT = 3001;
+AuctionPORT = 8001;
 AuctionServer.listen(AuctionPORT, () => {
-  console.log(`Auction Server is Runnig at port ${AuctionPORT}`);
+  console.log(`Auction Server is Running at port ${AuctionPORT}`);
 });

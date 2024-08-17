@@ -15,7 +15,6 @@ const db = 'mongodb://localhost:27017/stubbleburning';
 //     }
 // }
 
-
 function connectDB(){
     mongoose.set('strictQuery', false);
     mongoose.connect(db).then((resp)=>{
@@ -26,6 +25,5 @@ function connectDB(){
       });
     const connection = mongoose.connection;
 }
-    
-
+  
 module.exports = connectDB;

@@ -18,7 +18,7 @@ const SignUpCompany = () => {
   const Companysignup = async (e) => {
     e.preventDefault();
     if (company.password === company.cpassword) {
-      const data = await axios.post('http://localhost:5000/SignUpCompany', {
+      const data = await axios.post('http://localhost:8000/SignUpCompany', {
         name: company.name,
         mobileno: company.mobileno,
         email: company.email,

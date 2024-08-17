@@ -58,7 +58,7 @@ const Service = () => {
     setService({ email: service.email, mobileno: service.mobileno, acre: service.acre, ptype: service.ptype, date1: service.date1, du1: service.du1, du2: service.du2, type: datatype, mtype: JSON.stringify(arr) });
 
     // console.log(service);
-    const data = await axios.post('http://localhost:5001/Service', {
+    const data = await axios.post('http://localhost:8000/Service', {
       email: service.email,
       mobileno: service.mobileno,
       acre: service.acre,

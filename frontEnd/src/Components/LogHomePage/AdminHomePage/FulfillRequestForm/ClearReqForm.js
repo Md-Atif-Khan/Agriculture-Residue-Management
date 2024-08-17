@@ -21,7 +21,7 @@ const ClearReqForm=()=>{
       
       // console.log(ClearedList+"jedjshdh");
       setClearedList({email:SerData.email,tResidue:ClearedList.tResidue,tgrain:ClearedList.tgrain,sdate:ClearedList.sdate});
-      const data = await axios.post('http://localhost:5000/ClearReqForm', {
+      const data = await axios.post('http://localhost:8000/ClearReqForm', {
         email:ClearedList.email,
         tResidue: ClearedList.tResidue,
         tgrain: ClearedList.tgrain,

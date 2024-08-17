@@ -143,7 +143,10 @@ router.post('/SignUpFarmer', encryption, async (req, res) => {
     try {
         console.log(req.body);
         const EmailExist = await User.findOne({ email: req.body.email });
+        const MobileExist = await User.findOne({mobileno: req.body.mobileno});
+        if(MobileExist) return res.status(200).send("Mobile no. exist");
         if (EmailExist) return res.status(200).send("Email exist");
+
         else {
 
             const newUser = await User.create({
@@ -153,7 +156,6 @@ router.post('/SignUpFarmer', encryption, async (req, res) => {
                 password: req.body.password,
                 // userType: req.body.type
             });
-            // console.log("Printed");
             console.log(newUser);
             if (newUser) {
                 res.json({ success: true, msg: "successfully created company." })

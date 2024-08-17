@@ -18,7 +18,7 @@ const LoginCompany = () => {
 
   const Companylogin = async (e) => {
     e.preventDefault();
-    const data = await axios.post('http://localhost:5000/LoginCompany', {
+    const data = await axios.post('http://localhost:8000/LoginCompany', {
       email: Company.email,
       password: Company.password
     })

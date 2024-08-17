@@ -16,7 +16,7 @@ const LoginAdmin = () => {
 
   const Adminlogin = async (e) => {
     e.preventDefault();
-    const data = await axios.post('http://localhost:5000/LoginAdmin', {
+    const data = await axios.post('http://localhost:8000/LoginAdmin', {
       email: Admin.email,
       password: Admin.password
     })
