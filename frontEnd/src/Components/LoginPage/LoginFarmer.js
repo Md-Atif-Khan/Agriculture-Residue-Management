@@ -25,7 +25,7 @@ const LoginFarmer = () => {
     if (data.data.success) {
       showAlert(data.data.message, 'success');
       setUser(data.data.data)
-      localStorage.setItem("userLogin", JSON.stringify(data.data.data));
+      // localStorage.setItem("userLogin", JSON.stringify(data.data.data));
       LoginF('true');
       navigate('/FarmerHome')
     } else {
@@ -62,7 +62,7 @@ const LoginFarmer = () => {
           <div className="txt_field">
 
             <input type="text" required name='email' value={user1.email} onChange={handleInput} />
-            <label>mobile number</label>
+            <label>Email Id</label>
           </div>
           <div className="txt_field">
 

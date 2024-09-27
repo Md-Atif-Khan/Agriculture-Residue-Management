@@ -1,16 +1,22 @@
 const express = require('express');
-const app = express(); 
+const app = express();
 const http = require('http');
 const AuctionServer = http.createServer(app);
 const { Server } = require('socket.io');
-const AuctionModel = require('./models/Auction');
-const RoomModel = require('./models/AuctionRoom');
+const AuctionModel = require('../models/Auction');
+const RoomModel = require('../models/AuctionRoom');
+const connectDB = require('../config/db');
+const cookieParser = require('cookie-parser');
+
+connectDB();
+app.use(cookieParser());
+app.use(express.json());
 
 const io = new Server(AuctionServer, {
   cors: {
     origin: "*",
     methods: ["GET", "POST"],
-    allowedHeaders: ["my-custom-header"], 
+    allowedHeaders: ["my-custom-header"],
     credentials: true
   }
 });
@@ -19,6 +25,7 @@ const auctionTimers = {};
 
 io.on('connection', (socket) => {
   console.log("A user is Connected", socket.id);
+
   socket.on("join room", async (data) => {
     console.log("Room code is ", data.Code);
     let room = await RoomModel.findOne({ Code: data.Code });
@@ -32,8 +39,7 @@ io.on('connection', (socket) => {
 
       if (currentTime >= endTime) {
         socket.emit("auction_ended");
-      }
-      else {
+      }else {
         const timeLeft = endTime - currentTime;
         if (auctionTimers[data.Code]) {
           clearTimeout(auctionTimers[data.Code]);
@@ -54,7 +60,8 @@ io.on('connection', (socket) => {
 
       let recentBids = await AuctionModel.find({ Room: data.Code }).sort({ _id: -1 }).limit(3);
       socket.emit("bids", recentBids.reverse());
-    } else {
+    }
+    else {
       socket.emit("room_error", data.Code);
     }
   });
@@ -94,4 +101,8 @@ function endAuction(roomCode) {
   }
 }
 
-module.exports = AuctionServer;
+// module.exports = AuctionServer;
+AUCTION_SERVER_PORT = 8001 || process.env.AUCTION_SERVER_PORT;
+AuctionServer.listen(AUCTION_SERVER_PORT, () => {
+    console.log(`Auction Server is Runnig at port ${AUCTION_SERVER_PORT}`);
+});

@@ -7,7 +7,7 @@ const Alert = (props) => {
         const lower = word.toLowerCase();
         return lower.charAt(0).toUpperCase() + lower.slice(1);
     }
-    console.log("alert component", alert);
+    // console.log("alert component", alert);
     return (
         <>
             {alert &&

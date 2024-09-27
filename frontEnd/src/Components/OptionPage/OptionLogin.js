@@ -1,9 +1,5 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-// import Navbar from '../Navbar/Navbar';
-import LoginCompany from '../LoginPage/LoginCompany';
-import LoginFarmer from '../LoginPage/LoginFarmer';
-import LoginAdmin from '../LoginPage/LoginAdmin';
 import "./Option.css";
 const OptionLogin = () => {
   const navigate = useNavigate();

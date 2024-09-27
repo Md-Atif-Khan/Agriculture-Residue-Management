@@ -22,7 +22,7 @@ function Carousel({ images }) {
   const slideLeft = () => {
     setCurrent(current === 0 ? images.length - 1 : current - 1);
   };
-  console.log(current);
+
   return (
     <div
       className="carousel"

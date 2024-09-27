@@ -31,7 +31,7 @@ function Auction() {
       setPrice(amount);
       socket.emit('send_bid', { bid: amount, Code, user });
     } else {
-      alert("Please enter a valid bid");
+      alert("Please enter a value higher than the heighest bid");
     }
     setAmount('');
   };
@@ -42,7 +42,7 @@ function Auction() {
   };
 
   useEffect(() => {
-    const user1 = localStorage.getItem('user');
+    const user1 = JSON.parse(localStorage.getItem('userLogin')).name;
     setUser(user1);
 
     socket.on("auth_error", (data) => {

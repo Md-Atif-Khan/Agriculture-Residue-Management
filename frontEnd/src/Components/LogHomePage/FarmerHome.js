@@ -12,12 +12,10 @@ import './Home.css'
 const Home = () => {
     const navigate = useNavigate();
     const HandleResearch = () => {
-
         navigate('/Research');
         // setIsLoggedIn(false);
     }
     const handleService = () => {
-        
         navigate('/Service');
         // setIsLoggedIn(false);
     }

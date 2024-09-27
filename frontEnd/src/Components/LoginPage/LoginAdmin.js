@@ -24,7 +24,7 @@ const LoginAdmin = () => {
       showAlert(data.data.message, 'success');
       setUser(data.data.data)
 
-      localStorage.setItem("userLogin", JSON.stringify(data.data.data));
+      // localStorage.setItem("userLogin", JSON.stringify(data.data.data));
       LoginA('true');
       navigate('/AdminHome')
     } else {
@@ -62,7 +62,7 @@ const LoginAdmin = () => {
           <div className="txt_field">
 
             <input type="text" required name='email' value={Admin.email} onChange={handleInput} />
-            <label>Admin email</label>
+            <label>Email Id</label>
           </div>
           <div className="txt_field">
 

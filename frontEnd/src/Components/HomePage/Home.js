@@ -1,39 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-// import Login from '../LoginPage/Login'
-// import FarmerHome from '../LogHomePage/FarmerHome';
-// import Navbar from '../Navbar/Navbar';
-// import Auction from '../Auction/Auction'
 import Contact from '../homeComponent/ContactUsPage/Contact'
 import Aboutus from '../homeComponent/AboutUs/Aboutus'
 import Carousel from '../homeComponent/CarouselPage/Carousel';
 import { countries } from '../homeComponent/CarouselPage/Data';
 import Piechart from '../homeComponent/piechart/Piechart';
 import Research from '../homeComponent/ResearchPage/Research';
-// import Service from '../ServicePage/Service';
 import './HomeStyle.css'
+
 const Home = () => {
-
-    //     const [userType, setUserType] = useState('');
-    //   const [isLoading, setIsLoading] = useState(true);
-
-    //   useEffect(() => {
-    //     axios.get('/')
-    //       .then(response => {
-    //         setUserType(response.data);
-    //         setIsLoading(false);
-    //       })
-    //       .catch(error => {
-    //         console.error(error);
-    //         setIsLoading(false);
-    //       });
-    //   }, []);
-
-    //   if (isLoading) {
-    //     return <div>Loading...</div>;
-    //   }
-    // let isemailExist=
     const navigate = useNavigate();
     const HandleResearch = () => {
         navigate('/Research');
@@ -42,28 +18,9 @@ const Home = () => {
 
     return (
         <>
-            {/* {userType === 'admin' && <AdminHomePage />} */}
-            {/* {userType === 'User' && <FarmerHome/>} */}
-            {/* <Navbar/> */}
             <div className='main' id="HOME">
                 <div className="bodymain">
                     <div className="carousel"> <Carousel images={countries} /></div>
-
-                    {/* <div className="main-image">
-                        <img src="../images/agricultural-waste.jpg" className="Main-img" alt="" />
-                    </div> */}
-
-                    {/* <div className="space"></div>
-                    <div className="service navbar-container">
-                            <button className="button service button-name">
-                               <a href="Service">service</a> </button>
-                               <button className="button service Auction button-name">
-                               <a href="Auction">Auction</a> </button>
-                    </div> */}
-                    {/* <div className="Auction navbar-container">
-                            <button className="button service button-name">
-                            
-                    </div> */}
                     <div className="space"></div>
                     <div className="datacontainer">
                         <div className="text-container">

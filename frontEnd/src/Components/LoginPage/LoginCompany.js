@@ -15,7 +15,7 @@ const LoginCompany = () => {
   const [Company, setCompany] = useState({
     email: "", password: ""
   })
-
+ 
   const Companylogin = async (e) => {
     e.preventDefault();
     const data = await axios.post('http://localhost:8000/LoginCompany', {
@@ -25,14 +25,11 @@ const LoginCompany = () => {
     // console.log("inside company   ,"+data);
     if (data.data.success) {
       showAlert(data.data.message, 'success');
-      // <submit/>
-      // let Cname=data.data.data.name;
-      localStorage.setItem("loginC", 'true');
+      // localStorage.setItem("loginC", 'true');
       setUser(data.data.data)
-      LoginC(data.data.data.name, 'true');
-      localStorage.setItem('user', data.data.data.name);
-      localStorage.setItem("userLogin", JSON.stringify(data.data.data));
-
+      LoginC('true');
+      // localStorage.setItem('user', data.data.data.name);
+      // localStorage.setItem("userLogin", JSON.stringify(data.data.data));
       navigate('/CompanyHome')
     } else {
       showAlert(data.data.message, 'danger');
@@ -73,7 +70,7 @@ const LoginCompany = () => {
           <div className="txt_field">
 
             <input type="text" required name='email' value={Company.email} onChange={handleInput} />
-            <label>BuyerName</label>
+            <label>Email Id</label>
           </div>
           <div className="txt_field">
 

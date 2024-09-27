@@ -1,14 +1,14 @@
-
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import DeepContext from "./DeepContext";
 import axios from "axios";
+import useUser from "../hooks/useUser.js";
 const DeepState = (props) => {
   const loginC = localStorage.getItem('loginC'); // company
   const loginF = localStorage.getItem('loginF'); //farmer
   const loginA = localStorage.getItem('loginA'); //admin
 
-  const [user, setUser] = useState('');
+  const [user, setUser] = useUser(null);
   const [alert, setalert] = useState(null);
   const [loggedinC, setLoggedinC] = useState(loginC);
   const [loggedinF, setLoggedinF] = useState(loginF);
@@ -17,9 +17,9 @@ const DeepState = (props) => {
   const navigate = useNavigate();
 
   // const BaseUrl = 'http://localhost:8000'
-  useEffect(() => console.log("hello", loggedinA, "Dsafsd", loggedinC, "dsfsd", loggedinF), [alert, loggedinA, loggedinC, loggedinF]);
+  useEffect(() => console.log("state changed form DeepState.js"), [alert, loggedinA, loggedinC, loggedinF]);
 
-  const LoginC = (value, state) => {
+  const LoginC = (state) => {
     localStorage.setItem("loginC", state);
     setLoggedinC(state);
   }
@@ -50,8 +50,6 @@ const DeepState = (props) => {
         setalert(null);
       }, 3000);
     }
-
-    //To login into Student Account
 
     return (
       <DeepContext.Provider value={{ showAlert, alert, user, LoginC, loggedinC, LoginA, loggedinA, LoginF, loggedinF, setUser, EndObject, FullfillRequest }}>

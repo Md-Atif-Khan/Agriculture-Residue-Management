@@ -118,7 +118,7 @@ const Reasearch = () => {
                 <div className="space143"></div>
                 <footer>
                     <div className="aboutus143">
-                    For more details Contact : 21uec123
+                    For more details Contact : 21ucs130
                     </div>
 
                 </footer>
