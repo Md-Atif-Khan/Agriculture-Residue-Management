@@ -35,4 +35,4 @@ const AuctionRoomSchema = new mongoose.Schema({
     },
 });
 
-module.exports = mongoose.model('AuctionRoom', AuctionRoomSchema);
+module.exports = mongoose.model('AuctionRoom', AuctionRoomSchema); 

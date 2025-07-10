@@ -1,24 +1,24 @@
 const mongoose = require('mongoose');
 
-const ClearedList = mongoose.Schema({
-    email:{
-        type:String,
-        required:true,
+const ClearedListSchema = new mongoose.Schema({
+    email: {
+        type: String,
+        required: true,
+        minlength: 2,
+        maxlength: 30,
     },
-     tResidue:{
-        type : String,
-        required:true,
+    tResidue: {
+        type: String,
+        required: true,
     },
-    tgrain : {
-        type : String,
-        required : true,
+    tGrain: {
+        type: String,
+        required: true,
     },
-    sdate :{
-        type : Date,
-        required : true,
+    sDate: {
+        type: Date,
+        required: true,
     }
 });
 
-const model = mongoose.model("ClearedList",ClearedList);
-
-module.exports = model;
+module.exports = mongoose.model('ClearedList', ClearedListSchema);
