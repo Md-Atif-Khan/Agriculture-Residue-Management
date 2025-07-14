@@ -51,7 +51,7 @@ app.get('/health', (req, res) => {
 
 const io = new Server(AuctionServer, {
     cors: {
-        origin: ["http://localhost:3000", "https://stubble-management.vercel.app", "https://stubble-management-vercel-app.vercel.app"],
+        origin: ["http://localhost:3000", "https://agriculture-residue-management.vercel.app"],
         methods: ["GET", "POST"],
         allowedHeaders: ["my-custom-header", "Content-Type", "Authorization"],
         credentials: true
