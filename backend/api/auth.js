@@ -485,9 +485,6 @@ router.post("/LoginFarmer", async (req, res) => {
     const user = await User.findOne({ email: email });
     if (user) {
         if (await bcrypt.compare(password, user.password)) {
-
-            // var token = jwt.sign({ email: user.email, password:upass  }, `${process.env.TOCKEN_PRIVATE_KEY}`);
-
             res.status(200).send({
                 data: user,
                 //   cookie: token,
@@ -495,9 +492,7 @@ router.post("/LoginFarmer", async (req, res) => {
                 success: true,
                 message: `Hello    ${user.name},   You   Logged   in   successfully!`,
                 name: user.name
-
             });
-
         } else
             res.status(201).send({ success: false, message: "Error! : *** Invalid Password ***" });
     } else {
@@ -511,9 +506,6 @@ router.post("/LoginCompany", async (req, res) => {
     console.log(company);
     if (company) {
         if (await bcrypt.compare(password, company.password)) {
-
-            // var token = jwt.sign({ email: company.email, password:company.password  }, `${process.env.TOCKEN_PRIVATE_KEY}`);
-
             res.status(200).send({
                 data: company,
                 //   cookie: token,
@@ -536,9 +528,6 @@ router.post("/LoginAdmin", async (req, res) => {
     const admin = await Admin.findOne({ email: req.body.email });
     if (admin) {
         if (await bcrypt.compare(password, admin.password)) {
-
-            // var token = jwt.sign({ email: Admin.email, password:adpass  }, `${process.env.TOCKEN_PRIVATE_KEY}`);
-
             res.status(200).send({
                 data: admin,
                 //   cookie: token,
