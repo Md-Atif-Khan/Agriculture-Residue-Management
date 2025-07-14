@@ -16,22 +16,22 @@ const OptionLogin = () => {
     <>
       {/* <Navbar/> */}
       <div className="he"> <button className='Option' id='card1' onClick={handleFarmer}>
-        <div class="container1">
-          <div class="card">
+        <div className="container1">
+          <div className="card">
             Farmer
           </div>
         </div>
       </button>
         <button className='Option' id='card2' onClick={handleCompany}>
-          <div class="container1">
-            <div class="card">
+          <div className="container1">
+            <div className="card">
               Buyer
             </div>
           </div>
         </button>
         <button className='Option' id='card3' onClick={handleAdmin}>
-          <div class="container1">
-            <div class="card">
+          <div className="container1">
+            <div className="card">
               Admin
             </div>
           </div>

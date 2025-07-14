@@ -1,39 +1,13 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState } from 'react';
 import "./Profile.css";
-// import "bootstrap/dist/css/bootstrap.min.css";
 import DeepContext from "../../context/DeepContext";
 const Profile = () => {
-  const { user, setUser } = useContext(DeepContext);
-  // const [user1, setUser1] = useState({});
+  const { user } = useContext(DeepContext);
   const [farmerDetails, setFarmerDetails] = useState({
     Address: '',
-    // location: '',
     CropsType: '',
     LandSize: '',
   });
-  // const UpdateProfile = async (e) => {
-  //   e.preventDefault();
-  //   if (company.password === company.cpassword) {
-  //     const data = await axios.post('http://localhost:8000/SignUpCompany', {
-  //       name: company.name,
-  //       mobileno: company.mobileno,
-  //       email: company.email,
-  //       password: company.password,
-  //     })
-  //     // console.log(data.data);
-  //     if (data.data.success) {
-  //       showAlert(data.data.msg,'success');
-  //       navigate('/LoginCompany')
-  //     } else {
-  //       showAlert(data.data.msg,'danger');
-  //     }
-  //   }
-  //   else{
-  //     alert("Password Not Matching");
-  //   }
-
-  // }
-
 
   const handleChange = (event) => {
     setFarmerDetails({
@@ -47,11 +21,6 @@ const Profile = () => {
     console.log(farmerDetails);
   };
 
-  useEffect(() => {
-    let u = JSON.parse(localStorage.getItem("userLogin"));
-    u ? setUser(u) : setUser(null)
-  }, [])
-
   return (
     <div className="container12 jb">
       <div className="card12">
@@ -62,7 +31,7 @@ const Profile = () => {
         <div className="card-body12">
           <div className="form-group12">
             <label>Phone:</label>
-            <p>{user.mobileno}</p>
+            <p>{user.mobileNo}</p>
           </div>
           <div className="form-group12">
             <label>Email:</label>

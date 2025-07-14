@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import "./service.css"
@@ -10,13 +10,8 @@ const Service = () => {
   const navigate = useNavigate()
 
   const [service, setService] = useState({
-    email: "", mobileno: "", acre: "", ptype: "", date1: "", du1: "", du2: "", type: [], mtype: ""
+    email: "", mobileNo: "", acre: "", ptype: "", date1: "", du1: "", du2: "", type: [], mtype: ""
   })
-
-  useEffect(() => {
-    console.log(service);
-  }, [service]);
-
 
   const Servicefun = async (e) => {
     e.preventDefault();
@@ -39,12 +34,12 @@ const Service = () => {
       }
     }
 
-    setService({ email: service.email, mobileno: service.mobileno, acre: service.acre, ptype: service.ptype, date1: service.date1, du1: service.du1, du2: service.du2, type: datatype, mtype: JSON.stringify(arr) });
+    setService({ email: service.email, mobileNo: service.mobileNo, acre: service.acre, ptype: service.ptype, date1: service.date1, du1: service.du1, du2: service.du2, type: datatype, mtype: JSON.stringify(arr) });
 
     // console.log(service);
     const data = await axios.post('http://localhost:8000/Service', {
       email: service.email,
-      mobileno: service.mobileno,
+      mobileNo: service.mobileNo,
       acre: service.acre,
       ptype: service.ptype,
       date1: service.date1,
@@ -88,7 +83,7 @@ const Service = () => {
             <label>Email</label>
           </div>
           <div className="txt_field">
-            <input type="text" required name='mobileno' value={service.mobileno} onChange={handleInput} />
+            <input type="text" required name='mobileNo' value={service.mobileNo} onChange={handleInput} />
 
             <label>Phone no.</label>
           </div>
@@ -106,20 +101,20 @@ const Service = () => {
           <div className="txt_field">
 
             <input type="date" id="Date12" name="date1" value={service.date1} onChange={handleInput} />
-            <label for="date12">When did you plant that crop?</label>
+            <label htmlFor="date12">When did you plant that crop?</label>
             {/* <span></span> */}
           </div>
           <div >
 
             <div className="txt_field">
               <input type="date" id="Du1" name="du1" value={service.du1} onChange={handleInput} />
-              <label for="Du1">Approx duration of harvesting.</label>
+              <label htmlFor="Du1">Approx duration of harvesting.</label>
               {/* <span></span> */}
             </div>
 
             <div className="txt_field">
               <input type="date" id="Du2" name="du2" value={service.du2} onChange={handleInput} />
-              <label for="Du2">To</label>
+              <label htmlFor="Du2">To</label>
               {/* <span></span> */}
             </div>  </div>
 
@@ -144,42 +139,42 @@ const Service = () => {
 
           <div className='jb' >
 
-            <label for="faq">Select Machine you need for harvesting</label>
+            <label htmlFor="faq">Select Machine you need for harvesting</label>
             <span></span>
           </div>
           <div >
             <div className="jb2">
-              <label class="conta">
+              <label className="conta">
                 <input type="checkbox" value="Harvester" className='myCheckBox' />
-                <div class="checkmark" onClick={() => setService({ ...service, type: "Harvester" })}></div>
+                <div className="checkmark" onClick={() => setService({ ...service, type: "Harvester" })}></div>
               </label>
               <label className='jb3'>Harvester</label>
             </div>
             <div className="jb2">
-              <label class="conta">
+              <label className="conta">
                 <input type="checkbox" value="Tractor" className='myCheckBox' />
-                <div class="checkmark" onClick={() => setService({ ...service, type: "Tractor" })}></div>
+                <div className="checkmark" onClick={() => setService({ ...service, type: "Tractor" })}></div>
               </label>
               <label className='jb3'>Tractor</label>
             </div>
             <div className="jb2">
-              <label class="conta">
+              <label className="conta">
                 <input type="checkbox" value="Soil cultivator" className='myCheckBox' />
-                <div class="checkmark" onClick={() => setService({ ...service, type: "Soil cultivator" })}></div>
+                <div className="checkmark" onClick={() => setService({ ...service, type: "Soil cultivator" })}></div>
               </label>
               <label className='jb3'>Soil cultivator</label>
             </div>
             <div className="jb2">
-              <label class="conta">
+              <label className="conta">
                 <input type="checkbox" value="Disc Plough" className='myCheckBox' />
-                <div class="checkmark" onClick={() => setService({ ...service, type: "Disc Plough" })}></div>
+                <div className="checkmark" onClick={() => setService({ ...service, type: "Disc Plough" })}></div>
               </label>
               <label className='jb3'>Disc Plough</label>
             </div>
             <div className="jb2">
-              <label class="conta">
+              <label className="conta">
                 <input type="checkbox" value="Thresher " className='myCheckBox' />
-                <div class="checkmark" onClick={() => setService({ ...service, type: "Thresher" })}></div>
+                <div className="checkmark" onClick={() => setService({ ...service, type: "Thresher" })}></div>
               </label>
               <label className='jb3'>Thresher</label>
             </div>

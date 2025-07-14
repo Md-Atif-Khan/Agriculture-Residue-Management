@@ -1,8 +1,6 @@
 import React, { useContext,useState } from 'react'
-import LoginFarmer from '../LoginPage/LoginFarmer'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
-import Navbar from '../Navbar/Navbar';
 import "./style1.css"
 import DeepContext from '../../context/DeepContext';
 const SignUpFarmer = () => {
@@ -11,7 +9,7 @@ const SignUpFarmer = () => {
   const navigate = useNavigate()
 
   const [user, setUser] = useState({
-    name: "", mobileno: "", email: "", password: "", cpassword: ""
+    name: "", mobileNo: "", email: "", password: "", cpassword: ""
   })
 
   const usersignup = async (e) => {
@@ -19,11 +17,11 @@ const SignUpFarmer = () => {
     if (user.password === user.cpassword) {
       const data = await axios.post('http://localhost:8000/SignUpFarmer', {
         name: user.name,
-        mobileno: user.mobileno,
+        mobileNo: user.mobileNo,
         email: user.email,
         password: user.password,
       })
-      console.log("focus here",data.data);
+      // console.log("focus here",data.data);
       if (data.data.success) {
         showAlert(data.data.message,'success');
         navigate('/LoginFarmer')
@@ -66,7 +64,7 @@ const SignUpFarmer = () => {
             <label>Email</label>
           </div>
           <div className="txt_field">
-            <input type="text" required name='mobileno' value={user.mobileno} onChange={handleInput} />
+            <input type="text" required name='mobileNo' value={user.mobileNo} onChange={handleInput} />
 
             <label>Phone no.</label>
           </div>

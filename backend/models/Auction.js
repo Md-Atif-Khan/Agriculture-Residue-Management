@@ -1,21 +1,22 @@
 const mongoose = require('mongoose');
 
-const Auction = mongoose.Schema({
-    Bid :{
-        type : Number,
-        required:true,
+const AuctionSchema = new mongoose.Schema({
+    bid: {
+        type: Number,
+        required: true,
     },
-    User : {
-        type : String,
-        required : true,
-         
+    user: {
+        type: String,
+        required: true,
     },
-    Room :{
-        type : String,
-        required : true,
+    userName: {
+        type: String,
+        default: 'Anonymous'
+    },
+    room: {
+        type: String,
+        required: true,
     }
-});
+}, { timestamps: true });
 
-const AuctionModel = mongoose.model("auction",Auction);
-
-module.exports = AuctionModel;
+module.exports = mongoose.model('Auction', AuctionSchema);

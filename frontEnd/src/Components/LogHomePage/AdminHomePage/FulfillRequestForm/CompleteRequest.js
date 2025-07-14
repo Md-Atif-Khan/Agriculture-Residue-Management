@@ -5,7 +5,7 @@ import DeepContext from '../../../../context/DeepContext';
 import axios from 'axios';
 const ListContainer = () => {
 
-  const { showAlert,user, EndObject,FullfillRequest } = useContext(DeepContext);
+  const { showAlert,user, EndObject, FullfillRequest } = useContext(DeepContext);
   // console.log(EndObject+"this is end object");
   const data = EndObject;
   // console.log("test print",user);
@@ -39,15 +39,15 @@ const ListContainer = () => {
   //   }, [service])
   return (
     <>
-      <div class="cardforlist">
-        <div class="tools">
-          <div class="circle">
-            <button onClick={handleBack}><span class="red box">Back</span></button>
+      <div className="cardforlist">
+        <div className="tools">
+          <div className="circle">
+            <button onClick={handleBack}><span className="red box">Back</span></button>
           </div>
         </div>
-        {/* <div class="card__content"> */}
+        {/* <div className="card__content"> */}
         {/*   <div className="oneline"> <h2>Email: {service.email}</h2></div> */}
-        {/* <div className="oneline"><p>Mobile No: {service.mobileno}</p></div>
+        {/* <div className="oneline"><p>Mobile No: {service.mobileNo}</p></div>
       <div className="oneline"><p>Acre: {service.acre}</p></div>
       <div className="oneline"><p>Property Type: {service.ptype}</p></div>
       <div className="oneline"><p>Date 1: {service.date1}</p></div>
@@ -62,39 +62,39 @@ const ListContainer = () => {
       <p>MType: {service.mtype}</p>
       </div>
     */}
-        {/* <div class="card14"> */}
-        <div class="header2">{data.email}</div>
-        <div class="body2">
-          <div class="req">
-            <div class="req-name"><p>Mobile No: {data.mobileno}</p></div>
+        {/* <div className="card14"> */}
+        <div className="header2">{data.email}</div>
+        <div className="body2">
+          <div className="req">
+            <div className="req-name"><p>Mobile No: {data.mobileNo}</p></div>
 
           </div>
-          <div class="req">
-            <div class="req-name"><p>Size of Farm (in Acre): {data.acre}</p></div>
+          <div className="req">
+            <div className="req-name"><p>Size of Farm (in Acre): {data.acre}</p></div>
 
           </div>
-          <div class="req">
-            <div class="req-name"><p>Type of Grains: {data.ptype}</p></div>
+          <div className="req">
+            <div className="req-name"><p>Type of Grains: {data.ptype}</p></div>
 
           </div>
-          <div class="req">
-            <div class="req-name"><p>Planting Date: {data.date1}</p></div>
+          <div className="req">
+            <div className="req-name"><p>Planting Date: {data.date1}</p></div>
 
           </div>
-          <div class="req">
-            <div class="req-name"><p>Start Date: {data.du1}</p></div>
+          <div className="req">
+            <div className="req-name"><p>Start Date: {data.du1}</p></div>
 
           </div>
-          <div class="req">
-            <div class="req-name"><p>End Date: {data.du2}</p></div>
+          <div className="req">
+            <div className="req-name"><p>End Date: {data.du2}</p></div>
 
           </div>
-          <div class="req">
-            <div class="req-name"><p>service Type: {data.type}</p></div>
+          <div className="req">
+            <div className="req-name"><p>service Type: {data.type}</p></div>
 
           </div>
-          <div class="req">
-            <div class="req-name"><p>Machines Required: {data.mtype}</p></div>
+          <div className="req">
+            <div className="req-name"><p>Machines Required: {data.mtype}</p></div>
 
           </div>
           <div className="req">

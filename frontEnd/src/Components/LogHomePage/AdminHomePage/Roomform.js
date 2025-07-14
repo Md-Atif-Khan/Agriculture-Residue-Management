@@ -4,11 +4,7 @@ import './RoomForm.css'
 import { useNavigate } from 'react-router-dom'
 import DeepContext from '../../../context/DeepContext';
 const Roomform = () => {
-  //   const [name, setName] = useState('');
-  //   const [description, setDescription] = useState('');
-  //   const [startDate, setStartDate] = useState('');
-  //   const [endDate, setEndDate] = useState('');
-  const { showAlert } = useContext(DeepContext);
+  const { user, showAlert } = useContext(DeepContext);
 
   const navigate = useNavigate()
 
@@ -26,7 +22,7 @@ const Roomform = () => {
       StartBid:Room.StartBid,
       startDate: Room.startDate,
       endDate: Room.endDate,
-      StartBid : "2000"
+      userName: user.name
     })
     // console.log("deep", data);
     if (data.data.success) {

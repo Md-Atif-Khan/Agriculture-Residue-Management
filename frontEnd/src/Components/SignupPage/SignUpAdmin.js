@@ -1,8 +1,6 @@
 import React, { useContext, useState } from 'react'
-import LoginAdmin from '../LoginPage/LoginAdmin'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
-// import Navbar from '../Navbar/Navbar';
 import "./style1.css"
 import DeepContext from '../../context/DeepContext';
 
@@ -12,7 +10,7 @@ const SignUpAdmin = () => {
   const navigate = useNavigate()
 
   const [Admin, setAdmin] = useState({
-    name: "", mobileno: "", email: "", password: "", cpassword: ""
+    name: "", mobileNo: "", email: "", password: "", cpassword: ""
   })
 
   const Adminsignup = async (e) => {
@@ -20,7 +18,7 @@ const SignUpAdmin = () => {
     if (Admin.password === Admin.cpassword) {
       const data = await axios.post('http://localhost:8000/SignUpAdmin', {
         name: Admin.name,
-        mobileno: Admin.mobileno,
+        mobileNo: Admin.mobileNo,
         email: Admin.email,
         password: Admin.password,
       })
@@ -67,7 +65,7 @@ const SignUpAdmin = () => {
             <label>Email</label>
           </div>
           <div className="txt_field">
-            <input type="text" required name='mobileno' value={Admin.mobileno} onChange={handleInput} />
+            <input type="text" required name='mobileNo' value={Admin.mobileNo} onChange={handleInput} />
 
             <label>Phone no.</label>
           </div>

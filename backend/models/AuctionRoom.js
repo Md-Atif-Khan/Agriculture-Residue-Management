@@ -1,43 +1,38 @@
 const mongoose = require('mongoose');
 
-const RoomSchema = mongoose.Schema({
-    Name : {
-        type : String,
-        required : true,
-        unique:true,
-        min:2,
-        max:30,
+const AuctionRoomSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true,
+        unique: true,
+        minlength: 2,
+        maxlength: 30,
     },
-    description : {
-        type : String,
-        required : true,
-        min:2,
-        max:100,
+    description: {
+        type: String,
+        required: true,
+        minlength: 2,
+        maxlength: 100,
     },
-    Code :{
-        type : String,
-        required : true,
-        unique : true,
-        min:4,
-        max:8,
+    code: {
+        type: String,
+        required: true,
+        unique: true,
+        minlength: 4,
+        maxlength: 8,
     },
-    StartBid :{
-        type : Number,
-        required : true,
-        // unique : true,
-        // min:4,
-        // max:8,
+    startBid: {
+        type: Number,
+        required: true,
     },
-    startDate :{
-        type:Date,
-        required:true,
+    startDate: {
+        type: Date,
+        required: true,
     },
-    endDate :{
-        type:Date,
-        required:true,
+    endDate: {
+        type: Date,
+        required: true,
     },
 });
 
-const RoomModel = mongoose.model('Room',RoomSchema);
-
-module.exports = RoomModel;
+module.exports = mongoose.model('AuctionRoom', AuctionRoomSchema);
