@@ -4,6 +4,7 @@ const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const router = require('../api/auth');
 const app = express();
+require('dotenv').config();
 connectDB();
 
 app.use(cookieParser());

@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+require('dotenv').config();
 const db = process.env.MONGO_URI || 'mongodb://localhost:27017/stubbleburning';
 
 const connectDB = async () => {

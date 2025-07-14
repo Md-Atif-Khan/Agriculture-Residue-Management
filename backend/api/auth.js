@@ -15,6 +15,7 @@ const { encryption } = require('../middleware/hasing')
 const { check, validationResult } = require('express-validator/check');
 const crypto = require('crypto');
 const mongoose = require('mongoose');
+require('dotenv').config();
 
 // Generate verification token
 const generateVerificationToken = () => {

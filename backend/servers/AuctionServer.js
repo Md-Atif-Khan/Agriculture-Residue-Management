@@ -7,6 +7,7 @@ const AuctionModel = require('../models/Auction');
 const RoomModel = require('../models/AuctionRoom');
 const connectDB = require('../config/db');
 const cookieParser = require('cookie-parser');
+require('dotenv').config();
 
 connectDB();
 app.use(cookieParser());
