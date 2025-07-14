@@ -1,5 +1,8 @@
 import React from 'react'
 
+const submitForm = (e) => {
+}
+
 const Forget = () => {
   return (
     <> 
@@ -11,7 +14,7 @@ const Forget = () => {
           <label htmlFor="email">Email</label>
           <input type="email" className="form-control" id="email" placeholder="Enter your email"/>
         </div>
-        <button className="btn btn-primary" onClick="submitForm()">Submit</button>
+        <button className="btn btn-primary" onClick={submitForm}>Submit</button>
       </form>
       <div id="message" className="d-none"></div>
     </div>

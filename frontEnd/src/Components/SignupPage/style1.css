@@ -14,11 +14,13 @@ html{
 }
 
 .centerS{
-  position: absolute;
-  top: 41rem;
-  left: 50%;
+  margin: 4rem auto 0 auto;
+  position: relative;
+  left: auto;
+  top: auto;
+  transform: none;
   width: 45rem;
-  transform: translate(-50%, -50%);
+  /* transform: translate(-50%, -50%); */
   background: white;
   border-radius: 2rem;
   box-shadow: 1rem 1rem 1.5rem rgba(0,0,0,0.05);
@@ -53,7 +55,7 @@ form .txt_field{
   top: 50%;
   left: .5rem;
   color: #adadad;
-  transform: translateY(-50%);
+  /* transform: translateY(-50%); */
   font-size: 1.6rem;
   pointer-events: none;
   transition: .5s;
@@ -69,12 +71,12 @@ form .txt_field{
   transition: .5s;
 }
 .txt_field input:focus ~ label,
-.txt_field input:valid ~ label{
+.txt_field input:not(:placeholder-shown) ~ label {
   top: -0.5rem;
   color: #2691d9;
 }
 .txt_field input:focus ~ span::before,
-.txt_field input:valid ~ span::before{
+.txt_field input:not(:placeholder-shown) ~ span::before {
   width: 100%;
 }
 .pass{

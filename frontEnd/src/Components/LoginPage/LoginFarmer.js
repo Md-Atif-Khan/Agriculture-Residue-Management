@@ -1,9 +1,5 @@
 import React, { useContext, useState } from 'react'
 import "./style.css"
-import SignUpFarmer from '../SignupPage/SignUpFarmer'
-import Forget from './Forget'
-import Navbar from '../Navbar/Navbar';
-// import Home from '../HomePage/Home'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import DeepContext from '../../context/DeepContext';
@@ -21,12 +17,12 @@ const LoginFarmer = () => {
       email: user1.email,
       password: user1.password
     })
-    console.log(data);
+    // console.log(data);
     if (data.data.success) {
       showAlert(data.data.message, 'success');
       setUser(data.data.data)
       // localStorage.setItem("userLogin", JSON.stringify(data.data.data));
-      LoginF('true');
+      // LoginF('true');
       navigate('/FarmerHome')
     } else {
       showAlert(data.data.message, 'danger');

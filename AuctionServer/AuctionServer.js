@@ -87,7 +87,7 @@ io.on('connection', (socket) => {
         
         console.log("Room code is ", data.code);
         let room = await RoomModel.findOne({ code: data.code });
-        
+
         if (room) {
             console.log("Room found, details:", {
                 name: room.name,

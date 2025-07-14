@@ -64,11 +64,11 @@ const Home = () => {
                     <div className="text-container">
                         <h3 className="text-head">You Want To See Our Prediction of Howmuch Residue will be generated according to the size of your land?</h3>
                         <div className="space"></div>
-                        <button class="learn-more" onClick={HandleResearch}>
-                            <span class="circle" aria-hidden="true">
-                                <span class="icon arrow"></span>
+                        <button className="learn-more" onClick={HandleResearch}>
+                            <span className="circle" aria-hidden="true">
+                                <span className="icon arrow"></span>
                             </span>
-                            <span class="button-text">Learn More</span>
+                            <span className="button-text">Learn More</span>
                         </button>
                     </div>
                 </div>
