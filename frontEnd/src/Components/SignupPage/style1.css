@@ -13,6 +13,20 @@ html{
   font-family: "Poppins", sans-serif;
 }
 
+.txt_field .custom-select{
+  width: 100%;
+  padding: 0 0.5rem;
+  height: 4rem;
+  font-size: 1.6rem;
+  border: none;
+  background: none;
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
 .centerS{
   margin: 4rem auto 0 auto;
   position: relative;
@@ -70,13 +84,31 @@ form .txt_field{
   background: #2691d9;
   transition: .5s;
 }
+/* Floating label effect for input */
 .txt_field input:focus ~ label,
 .txt_field input:not(:placeholder-shown) ~ label {
   top: -0.5rem;
   color: #2691d9;
+  font-size: 1.3rem;
+  background: white;
+  padding: 0 0.3rem;
+  z-index: 2;
 }
 .txt_field input:focus ~ span::before,
 .txt_field input:not(:placeholder-shown) ~ span::before {
+  width: 100%;
+}
+/* For select floating label */
+.txt_field .custom-select:focus ~ label,
+.txt_field .custom-select:not([value=""]) ~ label {
+  top: -0.5rem;
+  color: #2691d9;
+  font-size: 1.3rem;
+  background: white;
+  padding: 0 0.3rem;
+  z-index: 2;
+}
+.txt_field .custom-select:focus ~ span::before {
   width: 100%;
 }
 .pass{

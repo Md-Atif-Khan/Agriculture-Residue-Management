@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import DeepContext from '../../context/DeepContext';
+import './style.css';
 // import GoogleSignIn from '../GoogleSignIn';
 // Set axios defaults for all requests
 axios.defaults.baseURL = process.env.REACT_APP_API_URL || 'http://localhost:8000';
@@ -265,8 +266,7 @@ const Login = () => {
             name="userType"
             value={userType}
             onChange={handleUserTypeChange}
-            className="form-control"
-            style={{ width: "100%", height: "4rem", fontSize: "1.6rem", border: "none", background: "none", outline: "none" }}
+            className="custom-select"
           >
             <option value="Farmer">Farmer</option>
             <option value="Company">Company</option>

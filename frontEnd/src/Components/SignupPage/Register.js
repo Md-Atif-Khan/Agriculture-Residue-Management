@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import './style1.css'; 
 
 const Register = ({ setUser }) => {
     const navigate = useNavigate();
@@ -128,19 +129,19 @@ const Register = ({ setUser }) => {
                     <span></span>
                     <label>Confirm Password</label>
                 </div>
-                <div className="txt_field">
-                    <select
-                        name="userType"
-                        value={userType}
-                        onChange={onChange}
-                        style={{ width: "100%", height: "4rem", fontSize: "1.6rem", border: "none", background: "none", outline: "none" }}
-                    >
-                        <option value="Farmer">Farmer</option>
-                        <option value="Company">Company</option>
-                    </select>
-                    <span></span>
-                    <label>User Type</label>
-                </div>
+        <div className="txt_field">
+          <select
+            name="userType"
+            value={userType}
+            onChange={onChange}
+            className="custom-select"
+          >
+            <option value="Farmer">Farmer</option>
+            <option value="Company">Company</option>
+          </select>
+          <span></span>
+          <label>User Type</label>
+        </div>
                 <input
                     type="submit"
                     value={loading ? 'Loading...' : 'Create account'}
