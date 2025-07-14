@@ -4,6 +4,9 @@ import DeepContext from '../context/DeepContext';
 const Alert = (props) => {
     const { alert } = useContext(DeepContext);
     const capitalize = (word) => {
+        if (word === undefined) {
+            return '';
+        }
         const lower = word.toLowerCase();
         return lower.charAt(0).toUpperCase() + lower.slice(1);
     }

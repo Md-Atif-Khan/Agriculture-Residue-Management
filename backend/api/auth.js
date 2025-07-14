@@ -549,7 +549,8 @@ router.post("/Service", async (req, res) => {
     const { email, password } = req.body;
     try {
         const EmailExist = await service.findOne({ email: req.body.email });
-        if (EmailExist) return res.status(200).send("Already Requested!!!");
+        if (EmailExist)   
+            return res.status(409).json({ success: false, msg: "Already requested!" });
         else {
             const newSer = await service.create({
                 email: req.body.email,
@@ -561,10 +562,9 @@ router.post("/Service", async (req, res) => {
                 du2: req.body.du2,
                 type: req.body.type,
                 mType: JSON.stringify(req.body.mtype),
-                // userType: req.body.type
             });
             if (newSer) {
-                res.json({ success: true, msg: "successfully requested for harvesting." })
+                res.status(200).json({ success: true, msg: "successfully requested for harvesting." })
             }
             else {
                 res.status(401).json({ success: false, msg: "Request is not accepted." })

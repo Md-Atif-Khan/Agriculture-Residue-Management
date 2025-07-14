@@ -21,41 +21,42 @@ const Service = () => {
     for (let i = 0; i < data1.length; i++) {
       if (data1[i].checked) {
         datatype = data1[i].value;
-        console.log(data1[i].value);
       }
     }
-    // console.log(datatype , "is selected");
     const newValue = document.getElementsByClassName('myCheckBox');
     let arr = [];
     for (let i = 0; i < newValue.length; i++) {
       if (newValue[i].checked) {
         arr = [...arr, newValue[i].value];
-        console.log(newValue[i].value);
       }
     }
 
     setService({ email: service.email, mobileNo: service.mobileNo, acre: service.acre, ptype: service.ptype, date1: service.date1, du1: service.du1, du2: service.du2, type: datatype, mtype: JSON.stringify(arr) });
 
-    // console.log(service);
-    const data = await axios.post('http://localhost:8000/Service', {
-      email: service.email,
-      mobileNo: service.mobileNo,
-      acre: service.acre,
-      ptype: service.ptype,
-      date1: service.date1,
-      du1: service.du1,
-      du2: service.du2,
-      type: service.type,
-      mtype: service.mtype,
+    try {
+      const res = await axios.post('http://localhost:8000/Service', {
+        email: service.email,
+        mobileNo: service.mobileNo,
+        acre: service.acre,
+        ptype: service.ptype,
+        date1: service.date1,
+        du1: service.du1,
+        du2: service.du2,
+        type: service.type,
+        mtype: service.mtype
+      });
 
-    })
-    // console.log(data.data);
-    if (data.data.success) {
-      showAlert(data.data.msg, 'success');
-      navigate('/FarmerHome')
-    } else {
-      showAlert(data.data.msg, 'danger');
-      // navigate('/');
+      showAlert(res.data.msg, 'success');
+      navigate('/FarmerHome');
+    } catch (err) {
+      if (err.response?.status === 409) {
+        showAlert(err.response.data.msg, 'warning');
+        navigate('/FarmerHome');
+      } else if (err.response?.status === 401) {
+        showAlert(err.response.data.msg, 'danger');
+      } else {
+        showAlert("Something went wrong!", 'danger');
+      }
     }
   }
 
