@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import './CompanyHome.css';
 
 const CompanyDashboard = () => {
   const [activeRooms, setActiveRooms] = useState([]);
@@ -155,95 +156,154 @@ const CompanyDashboard = () => {
   };
 
   if (loading) {
-    return <div className="text-center mt-5"><div className="spinner-border text-primary" role="status"></div></div>;
+    return (
+      <div className="company-dashboard">
+        <div className="loading-container">
+          <div className="spinner"></div>
+          <p className="loading-text">Loading dashboard...</p>
+        </div>
+      </div>
+    );
   }
 
   return (
-    <div>
-      <h1 className="mb-4">Company Dashboard</h1>
-      
-      {error && <div className="alert alert-danger">{error}</div>}
-      {joinSuccess && <div className="alert alert-success">{joinSuccess}</div>}
-      
-      <div className="row mb-4">
-        <div className="col-md-6">
-          <div className="dashboard-stat bg-primary text-white">
-            <h1>{activeRooms.length}</h1>
-            <p>Active Auction Rooms</p>
-          </div>
+    <div className="company-dashboard">
+      <div className="dashboard-header">
+        <h1 className="dashboard-title">Company Dashboard</h1>
+        <p className="dashboard-subtitle">Manage your auction participation and place bids</p>
+      </div>
+
+      <div className="dashboard-alerts">
+        {error && <div className="alert alert-danger">{error}</div>}
+        {joinSuccess && <div className="alert alert-success">{joinSuccess}</div>}
+      </div>
+
+      <div className="stats-container">
+        <div className="stat-card">
+          <h2>{activeRooms.length}</h2>
+          <p>Active Auction Rooms</p>
         </div>
-        <div className="col-md-6">
-          <div className="dashboard-stat bg-success text-white">
-            <h1>{joinedRooms.length}</h1>
-            <p>Joined Auction Rooms</p>
-          </div>
+        <div className="stat-card stat-success">
+          <h2>{joinedRooms.length}</h2>
+          <p>My Joined Rooms</p>
         </div>
       </div>
-      
-      <div className="mb-4 d-flex justify-content-between align-items-center">
-        <h2>My Auction Rooms</h2>
-        <button onClick={toggleJoinRoomModal} className="btn btn-primary">
-          <i className="fas fa-sign-in-alt mr-1"></i> Join Room by Code
+
+      <div className="section-header">
+        <h2 className="section-title">My Auction Rooms</h2>
+        <button onClick={toggleJoinRoomModal} className="btn-primary">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+          </svg>
+          Join Room by Code
         </button>
       </div>
       
       {joinedRooms.length === 0 ? (
-        <div className="alert alert-info">
-          You haven't joined any auction rooms yet. Join a room to start bidding!
+        <div className="empty-state">
+          <div className="empty-state-icon">📋</div>
+          <h3 className="empty-state-title">No Joined Rooms Yet</h3>
+          <p className="empty-state-text">You haven't joined any auction rooms yet. Join a room to start bidding!</p>
         </div>
       ) : (
-        <div className="row">
+        <div className="auction-grid">
           {joinedRooms.map((room) => (
-            <div className="col-md-6 mb-4" key={room._id}>
-              <div className="card auction-container">
-                <div className="card-body">
-                  <h4 className="card-title">{room.name}</h4>
-                  <p className="card-text">
-                    <strong>Description:</strong> {room.description}<br />
-                    <strong>Room Code:</strong> {room.code}<br />
-                    <strong>Starting Bid:</strong> ₹{room.startBid}/acre<br />
-                    <strong>Current Highest Bid:</strong> ₹{bidInfo[room.code]?.amount || room.startBid}/acre<br />
-                    <strong>Highest Bidder:</strong> {bidInfo[room.code]?.bidder || 'No bids yet'}<br />
-                    <strong>End Date:</strong> {formatDate(room.endDate)}
-                  </p>
-                  <Link to={`/auction/${room.code}`} className="btn btn-primary mt-2">
-                    <i className="fas fa-gavel mr-1"></i> Enter Bidding Room
-                  </Link>
+            <div className="auction-card" key={room._id}>
+              <div className="auction-card-header">
+                <h3 className="auction-card-title">{room.name}</h3>
+              </div>
+              <div className="auction-card-body">
+                <div className="auction-info">
+                  <div className="auction-info-item">
+                    <span className="auction-info-label">Description</span>
+                    <span className="auction-info-value">{room.description}</span>
+                  </div>
+                  <div className="auction-info-item">
+                    <span className="auction-info-label">Room Code</span>
+                    <span className="auction-info-value">{room.code}</span>
+                  </div>
+                  <div className="auction-info-item">
+                    <span className="auction-info-label">Starting Bid</span>
+                    <span className="auction-info-value">₹{room.startBid}/acre</span>
+                  </div>
+                  <div className="auction-info-item">
+                    <span className="auction-info-label">Current Highest</span>
+                    <span className="auction-info-value highlight">₹{bidInfo[room.code]?.amount || room.startBid}/acre</span>
+                  </div>
+                  <div className="auction-info-item">
+                    <span className="auction-info-label">Highest Bidder</span>
+                    <span className="auction-info-value">{bidInfo[room.code]?.bidder || 'No bids yet'}</span>
+                  </div>
+                  <div className="auction-info-item">
+                    <span className="auction-info-label">End Date</span>
+                    <span className="auction-info-value">{formatDate(room.endDate)}</span>
+                  </div>
                 </div>
+              </div>
+              <div className="auction-card-footer">
+                <Link to={`/auction/${room.code}`} className="btn-primary">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M3 2a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2zm8 6a.75.75 0 1 0-1.5 0a.75.75 0 0 0 1.5 0z"/>
+                </svg>
+                  Enter Bidding Room
+                </Link>
               </div>
             </div>
           ))}
         </div>
       )}
       
-      <h2 className="mt-5 mb-4">Available Auction Rooms</h2>
-      
-      {activeRooms.length === 0 ? (
-        <div className="alert alert-info">
-          No auction rooms are currently available.
+      <div className="section-header mt-5">
+        <h2 className="section-title">Available Auction Rooms</h2>
+      </div>
+
+      {activeRooms.filter(room => !isJoined(room.code)).length === 0 ? (
+        <div className="empty-state">
+          <div className="empty-state-icon">🔍</div>
+          <h3 className="empty-state-title">No Available Rooms</h3>
+          <p className="empty-state-text">All auction rooms have been joined or there are no active auctions.</p>
         </div>
       ) : (
-        <div className="row">
+        <div className="auction-grid">
           {activeRooms
             .filter(room => !isJoined(room.code))
             .map((room) => (
-              <div className="col-md-6 mb-4" key={room._id}>
-                <div className="card auction-container">
-                  <div className="card-body">
-                    <h4 className="card-title">{room.name}</h4>
-                    <p className="card-text">
-                      <strong>Description:</strong> {room.description}<br />
-                      <strong>Room Code:</strong> {room.code}<br />
-                      <strong>Starting Bid:</strong> ₹{room.startBid}/acre<br />
-                      <strong>End Date:</strong> {formatDate(room.endDate)}
-                    </p>
-                    <button 
-                      onClick={() => joinRoom(room.code)} 
-                      className="btn btn-success mt-2"
-                    >
-                      <i className="fas fa-sign-in-alt mr-1"></i> Join Room
-                    </button>
+              <div className="auction-card" key={room._id}>
+                <div className="auction-card-header">
+                  <h3 className="auction-card-title">{room.name}</h3>
+                </div>
+                <div className="auction-card-body">
+                  <div className="auction-info">
+                    <div className="auction-info-item">
+                      <span className="auction-info-label">Description</span>
+                      <span className="auction-info-value">{room.description}</span>
+                    </div>
+                    <div className="auction-info-item">
+                      <span className="auction-info-label">Room Code</span>
+                      <span className="auction-info-value">{room.code}</span>
+                    </div>
+                    <div className="auction-info-item">
+                      <span className="auction-info-label">Starting Bid</span>
+                      <span className="auction-info-value highlight">₹{room.startBid}/acre</span>
+                    </div>
+                    <div className="auction-info-item">
+                      <span className="auction-info-label">End Date</span>
+                      <span className="auction-info-value">{formatDate(room.endDate)}</span>
+                    </div>
                   </div>
+                </div>
+                <div className="auction-card-footer">
+                  <button
+                    onClick={() => joinRoom(room.code)}
+                    className="btn-success"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                      <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
+                    </svg>
+                    Join Room
+                  </button>
                 </div>
               </div>
             ))}
@@ -252,32 +312,36 @@ const CompanyDashboard = () => {
       
       {/* Join Room Modal */}
       {joinRoomModal && (
-        <div className="modal" style={{ display: 'block', backgroundColor: 'rgba(0,0,0,0.5)' }}>
-          <div className="modal-dialog">
-            <div className="modal-content">
-              <div className="modal-header">
-                <h5 className="modal-title">Join Auction Room</h5>
-                <button type="button" className="close" onClick={toggleJoinRoomModal}>
-                  <span>&times;</span>
+        <div className="modal-overlay" onClick={toggleJoinRoomModal}>
+          <div className="modal-container" onClick={(e) => e.stopPropagation()}>
+            <div className="modal-header">
+              <h2 className="modal-title">Join Auction Room</h2>
+              <button type="button" className="modal-close" onClick={toggleJoinRoomModal}>
+                <span>×</span>
+              </button>
+            </div>
+            <div className="modal-body">
+              {joinError && <div className="alert alert-danger">{joinError}</div>}
+              <form onSubmit={handleJoinRoom}>
+                <div className="form-group">
+                  <label className="form-label">Room Code</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    value={roomCode}
+                    onChange={(e) => setRoomCode(e.target.value)}
+                    placeholder="Enter room code (e.g., ABC123)"
+                    required
+                  />
+                </div>
+                <button type="submit" className="btn-primary">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                    <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
+                  </svg>
+                  Join Room
                 </button>
-              </div>
-              <div className="modal-body">
-                {joinError && <div className="alert alert-danger">{joinError}</div>}
-                <form onSubmit={handleJoinRoom}>
-                  <div className="form-group">
-                    <label>Room Code</label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      value={roomCode}
-                      onChange={(e) => setRoomCode(e.target.value)}
-                      placeholder="Enter room code"
-                      required
-                    />
-                  </div>
-                  <button type="submit" className="btn btn-primary">Join Room</button>
-                </form>
-              </div>
+              </form>
             </div>
           </div>
         </div>

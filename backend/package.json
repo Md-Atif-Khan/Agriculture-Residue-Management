@@ -14,10 +14,8 @@
     "socket.io": "^4.8.0"
   },
   "scripts": {
-    "start": "node servers/server.js",
-    "start:auction": "node servers/AuctionServer.js",
-    "dev:server": "nodemon servers/server.js",
-    "dev:auction": "nodemon servers/AuctionServer.js",
+    "start": "node server.js",
+    "dev": "nodemon server.js",
     "seed:admin": "node config/seedAdmin.js"
   },
   "name": "backend",

@@ -1,8 +1,8 @@
 const express = require('express');
-const connectDB = require('../config/db');
+const connectDB = require('./config/db');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
-const router = require('../api/auth');
+const router = require('./api/auth');
 const app = express();
 require('dotenv').config();
 connectDB();

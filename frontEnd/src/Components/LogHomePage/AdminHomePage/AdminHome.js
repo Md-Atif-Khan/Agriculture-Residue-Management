@@ -54,9 +54,11 @@ const AdminHome = () => {
 
   if (loading) {
     return (
-      <div className="text-center py-5">
-        <div className="spinner-border text-primary" role="status"></div>
-        <p className="mt-3">Loading dashboard...</p>
+      <div className="admin-dashboard">
+        <div className="admin-loading">
+          <div className="admin-spinner"></div>
+          <p className="admin-loading-text">Loading dashboard...</p>
+        </div>
       </div>
     );
   }
@@ -111,26 +113,29 @@ const AdminHome = () => {
   //   </>
   // );
   return (
-    <div className="container py-4">
-      <h1 className="mb-4">Admin Dashboard</h1>
+    <div className="admin-dashboard">
+      <div className="admin-header">
+        <h1 className="admin-title">Admin Dashboard</h1>
+        <p className="admin-subtitle">Manage auction rooms and service requests</p>
+      </div>
 
-      <div className="row">
-        <div className="col-md-8">
-          <div className="card mb-4">
-            <div className="card-header bg-primary text-white d-flex justify-content-between align-items-center">
-              <h5 className="mb-0">Active Auction Rooms</h5>
-              <Link to="/CreateRoom" className="btn btn-sm btn-light">
-                + Create New Room
-              </Link>
+      <div className="admin-content">
+        <div className="admin-main">
+          <div className="admin-card">
+            <div className="admin-card-header">
+              <h5 className="admin-card-title">Active Auction Rooms</h5>
             </div>
-            <div className="card-body">
-              {error && <div className="alert alert-danger">{error}</div>}
+            <div className="admin-card-body">
+              {error && <div className="admin-alert admin-alert-danger">{error}</div>}
 
               {rooms.length === 0 ? (
-                <div className="alert alert-info">No active auction rooms found.</div>
+                <div className="admin-empty-state">
+                  <div className="admin-empty-icon">📋</div>
+                  <p className="admin-empty-text">No active auction rooms found.</p>
+                </div>
               ) : (
-                <div className="table-responsive">
-                  <table className="table table-hover">
+                <div className="admin-table-container">
+                  <table className="admin-table">
                     <thead>
                       <tr>
                         <th>Name</th>
@@ -146,10 +151,10 @@ const AdminHome = () => {
                           <td>{room.name}</td>
                           <td>₹{room.startBid}/acre</td>
                           <td>
-                            <div className="d-flex align-items-center">
-                              <span className="mr-2 font-weight-bold">{room.code}</span>
+                            <div className="room-code-display">
+                              <span className="room-code-text">{room.code}</span>
                               <button
-                                className="btn btn-sm btn-outline-secondary ml-2"
+                                className={`btn-copy ${copiedCode === room.code ? 'copied' : ''}`}
                                 onClick={() => copyRoomCode(room.code)}
                                 title="Copy room code"
                               >
@@ -161,7 +166,7 @@ const AdminHome = () => {
                           <td>
                             <Link
                               to={`/auction/${room.code}`}
-                              className="btn btn-sm btn-primary mr-2"
+                              className="btn-primary btn-view"
                             >
                               View
                             </Link>
@@ -176,16 +181,19 @@ const AdminHome = () => {
           </div>
 
           {/* Service Requests Section */}
-          <div className="card">
-            <div className="card-header bg-success text-white">
-              <h5 className="mb-0">Service Requests</h5>
+          <div className="admin-card">
+            <div className="admin-card-header header-success">
+              <h5 className="admin-card-title">Service Requests</h5>
             </div>
-            <div className="card-body">
+            <div className="admin-card-body">
               {services.length === 0 ? (
-                <div className="alert alert-info">No pending service requests.</div>
+                <div className="admin-empty-state">
+                  <div className="admin-empty-icon">✉️</div>
+                  <p className="admin-empty-text">No pending service requests.</p>
+                </div>
               ) : (
-                <div className="table-responsive">
-                  <table className="table table-hover">
+                <div className="admin-table-container">
+                  <table className="admin-table">
                     <thead>
                       <tr>
                         <th>Email</th>
@@ -203,7 +211,9 @@ const AdminHome = () => {
                           <td>{service.pType}</td>
                           <td>{formatDate(service.date1)}</td>
                           <td>
-                            <button onClick={() => { handleDeleteRequest(service) }}><li>{service.email}</li></button>
+                            <button className="btn-action" onClick={() => { handleDeleteRequest(service) }}>
+                              Process
+                            </button>
                           </td>
                         </tr>
                       ))}
@@ -215,40 +225,45 @@ const AdminHome = () => {
           </div>
         </div>
 
-        <div className="col-md-4">
-          <div className="card mb-4">
-            <div className="card-header bg-info text-white">
-              <h5 className="mb-0">Admin Actions</h5>
+        <div className="admin-sidebar">
+          <div className="admin-card">
+            <div className="admin-card-header header-info">
+              <h5 className="admin-card-title">Admin Actions</h5>
             </div>
-            <div className="card-body">
-              <div className="list-group">
-                <Link to="/CreateRoom" className="list-group-item list-group-item-action">
-                  <i className="fas fa-plus-circle mr-2"></i> Create New Auction Room
+            <div className="admin-card-body">
+              <div className="admin-action-list">
+                <Link to="/CreateRoom" className="admin-action-item">
+                  <span className="admin-action-icon">➕</span> Create New Auction Room
                 </Link>
-                <Link to="/manage-users" className="list-group-item list-group-item-action">
-                  <i className="fas fa-users-cog mr-2"></i> Manage Users
+                <Link to="/manage-users" className="admin-action-item">
+                  <span className="admin-action-icon">👥</span> Manage Users
                 </Link>
-                <Link to="/reports" className="list-group-item list-group-item-action">
-                  <i className="fas fa-chart-bar mr-2"></i> View Reports
+                <Link to="/reports" className="admin-action-item">
+                  <span className="admin-action-icon">📊</span> View Reports
                 </Link>
               </div>
             </div>
           </div>
-          <div className="card">
-            <div className="card-header bg-warning text-dark py-2 px-3">
-              <h6 className="mb-0" style={{ fontWeight: 600, fontSize: '1.1rem' }}>How to Share Room Codes</h6>
+
+          <div className="admin-info-box">
+            <div className="admin-info-title">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+              </svg>
+              How to Share Room Codes
             </div>
-            <div className="card-body py-3 px-3">
-              <p className="mb-2" style={{ fontSize: '0.98rem' }}>To invite companies to an auction:</p>
-              <ol className="pl-3" style={{ fontSize: '0.98rem' }}>
-                <li>Copy the room code from the table</li>
-                <li>Share the code with companies via email or messaging</li>
-                <li>Companies will use this code to join the auction</li>
-              </ol>
-              <div className="alert alert-warning mt-3 py-2 px-2" style={{ fontSize: '0.95rem', display: 'flex', alignItems: 'center' }}>
-                <i className="fas fa-exclamation-triangle mr-2" style={{ fontSize: '1.1rem' }}></i>
-                <span>Room codes should only be shared with authorized companies.</span>
-              </div>
+            <p className="admin-info-text">To invite companies to an auction:</p>
+            <ol className="admin-info-list">
+              <li>Copy the room code from the table</li>
+              <li>Share the code with companies via email or messaging</li>
+              <li>Companies will use this code to join the auction</li>
+            </ol>
+            <div className="admin-warning">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+              </svg>
+              <span>Room codes should only be shared with authorized companies.</span>
             </div>
           </div>
         </div>

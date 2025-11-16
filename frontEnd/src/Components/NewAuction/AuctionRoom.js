@@ -20,6 +20,7 @@ const AuctionRoom = () => {
   const [socketConnected, setSocketConnected] = useState(false);
   const [currentUserId, setCurrentUserId] = useState(null);
   const [participantCount, setParticipantCount] = useState(0);
+  const [isAuctionEnded, setIsAuctionEnded] = useState(false);
   const timerRef = useRef(null);
 
   // Get the current user ID when the component loads
@@ -118,11 +119,19 @@ const AuctionRoom = () => {
     newSocket.on('startDetails', (roomData) => {
       setAuction(roomData);
       setLoading(false);
-      
+
+      // Check if auction has already ended
+      const endTime = new Date(roomData.endDate).getTime();
+      const currentTime = new Date().getTime();
+      if (currentTime >= endTime) {
+        setIsAuctionEnded(true);
+        setError('This auction has ended');
+      }
+
       if (roomData.startBid) {
         setBidAmount((parseInt(roomData.startBid) + 10).toString());
       }
-      
+
       // Initialize participant count if available
       if (roomData.participants) {
         setParticipantCount(roomData.participants);
@@ -164,6 +173,7 @@ const AuctionRoom = () => {
     });
     
     newSocket.on('auction_ended', () => {
+      setIsAuctionEnded(true);
       setError('This auction has ended');
       setTimeRemaining(0);
       setFormattedTimeRemaining('Auction Ended');
@@ -336,8 +346,6 @@ const AuctionRoom = () => {
     );
   }
 
-  const isAuctionEnded = new Date(auction.endDate) < new Date();
-
   return (
     <div className="auction-main">
       <div className="auction-header">
@@ -347,7 +355,8 @@ const AuctionRoom = () => {
         </button>
       </div>
 
-      {error && <div className="auction-alert auction-alert-danger">{error}</div>}
+      {error && isAuctionEnded && <div className="auction-alert auction-alert-danger">{error}</div>}
+      {error && !isAuctionEnded && <div className="auction-alert auction-alert-warning">{error}</div>}
       {bidSuccess && <div className="auction-alert auction-alert-success">{bidSuccess}</div>}
 
       <div className="auction-content">
@@ -377,7 +386,7 @@ const AuctionRoom = () => {
                 <dt>End Date:</dt>
                 <dd>{auction?.endDate ? formatDate(auction.endDate) : 'N/A'}</dd>
                 <dt>Status:</dt>
-                <dd>{auction?.endDate && new Date(auction.endDate) < new Date() ? 'Ended' : 'Active'}</dd>
+                <dd>{isAuctionEnded ? 'Ended' : 'Active'}</dd>
                 <dt>Participants:</dt>
                 <dd>{participantCount || 0}</dd>
               </dl>
