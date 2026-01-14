@@ -1,10 +1,11 @@
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Carousel.css";
 
 function Carousel({ images }) {
   const [current, setCurrent] = useState(0);
   const [autoPlay, setAutoPlay] = useState(true);
+  const navigate = useNavigate();
   let timeOut = null;
 
   useEffect(() => {
@@ -23,6 +24,17 @@ function Carousel({ images }) {
     setCurrent(current === 0 ? images.length - 1 : current - 1);
   };
 
+  const handleCTAClick = (action) => {
+    if (action === "scroll") {
+      const heroSection = document.querySelector('.hero-stats');
+      if (heroSection) {
+        heroSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    } else if (action) {
+      navigate(action);
+    }
+  };
+
   return (
     <div
       className="carousel"
@@ -37,8 +49,6 @@ function Carousel({ images }) {
       <div className="carousel_wrapper">
         {images.map((image, index) => {
           return (
-            /* (condition) ? true : false */
-
             <div
               key={index}
               className={
@@ -48,9 +58,21 @@ function Carousel({ images }) {
               }
             >
               <img className="card_image" src={image.image} alt="" />
-              {/* <div className="card_overlay">
-                <h2 className="card_title">{image.title}</h2>
-              </div> */}
+              <div className="card_overlay">
+                <div className="card_content">
+                  <h1 className="card_title">{image.title}</h1>
+                  <h2 className="card_subtitle">{image.subtitle}</h2>
+                  <p className="card_description">{image.description}</p>
+                  {image.cta && (
+                    <button
+                      className="card_cta"
+                      onClick={() => handleCTAClick(image.action)}
+                    >
+                      {image.cta}
+                    </button>
+                  )}
+                </div>
+              </div>
             </div>
           );
         })}

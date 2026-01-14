@@ -1,5 +1,16 @@
-body {
+:root {
+  width: 100%;
+}
+
+html,
+body,
+#root {
+  height: 100%;
   margin: 0;
+  padding: 0;
+}
+
+body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -7,8 +18,26 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: whitesmoke;
   scroll-behavior: smooth;
-  
   transition: all 0.5s ease-out;
+}
+
+/* Layout wrapper for sticky footer */
+.page-wrapper {
+  min-height: calc(100vh - 80px);
+  padding-top: 80px;
+}
+
+/* Responsive padding adjustments to match navbar height */
+@media (max-width: 768px) {
+  .page-wrapper {
+    padding-top: 70px;
+  }
+}
+
+@media (max-width: 640px) {
+  .page-wrapper {
+    padding-top: 60px;
+  }
 }
 
 code {

@@ -1,219 +1,478 @@
-@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Assistant&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
-html{
-    font-size: 62.5%;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+/* Reset and Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-
-
-
-   /* Body Part ////////////////////////////////////////////*/
-
- 
-
-
-  /* spaceee*/
-.space{
-    margin: 17rem;
-}
-.space1{
-    margin: 11rem;
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
 }
 
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
 
-/* service button css */
-.service{
+/* Main Container */
+.main {
+  width: 100%;
+  background: #ffffff;
+}
+
+/* Carousel Wrapper */
+.carousel-wrapper {
+  width: 100%;
+  margin-bottom: 0;
+}
+
+/* Hero Stats Section */
+.hero-stats {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 5rem 2rem;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-stats::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
+  opacity: 0.3;
+}
+
+.hero-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-title {
+  font-size: 4rem;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+}
+
+.hero-subtitle {
+  font-size: 1.8rem;
+  text-align: center;
+  margin-bottom: 4rem;
+  opacity: 0.95;
+  font-weight: 400;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 3rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.stat-card {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 1.5rem;
+  padding: 3rem 2rem;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-10px);
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.stat-number {
+  font-size: 4.5rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 1.4rem;
+  opacity: 0.9;
+  font-weight: 500;
+}
+
+/* Info Sections */
+.info-section {
+  padding: 8rem 2rem;
+  background: #ffffff;
+}
+
+.info-section.alternate {
+  background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%);
+}
+
+.section-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.content-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: center;
+}
+
+.content-card.reverse {
+  grid-template-columns: 1fr 1fr;
+}
+
+.content-text {
+  padding: 2rem 0;
+}
+
+.section-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: #1a202c;
+  margin-bottom: 2rem;
+  line-height: 1.2;
+}
+
+.section-description {
+  font-size: 1.6rem;
+  line-height: 1.8;
+  color: #4a5568;
+  margin-bottom: 3rem;
+}
+
+.feature-list {
+  list-style: none;
+  padding: 0;
+}
+
+.feature-list li {
+  font-size: 1.5rem;
+  color: #2d3748;
+  padding: 1.2rem 0;
+  padding-left: 3rem;
+  position: relative;
+  line-height: 1.6;
+}
+
+.feature-list li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #667eea;
+  font-weight: bold;
+  font-size: 1.8rem;
+}
+
+.content-image {
+  position: relative;
+  border-radius: 2rem;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+
+.content-image:hover {
+  transform: scale(1.02);
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.2);
+}
+
+.content-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Challenge Grid */
+.challenge-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2.5rem;
+  margin-top: 3rem;
+}
+
+.challenge-item {
+  background: white;
+  padding: 2.5rem 2rem;
+  border-radius: 1.2rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.challenge-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+}
+
+.challenge-icon {
+  font-size: 3.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.challenge-item h4 {
+  font-size: 1.7rem;
+  color: #2d3748;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.challenge-item p {
+  font-size: 1.4rem;
+  color: #718096;
+  line-height: 1.6;
+}
+
+/* Impact Grid */
+.impact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 3rem;
+  margin-top: 3rem;
+}
+
+.impact-box {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 3rem 2.5rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+}
+
+.impact-box h4 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  font-weight: 700;
+}
+
+.impact-box ul {
+  list-style: none;
+  padding: 0;
+}
+
+.impact-box ul li {
+  font-size: 1.4rem;
+  padding: 1rem 0;
+  padding-left: 2.5rem;
+  position: relative;
+  line-height: 1.6;
+}
+
+.impact-box ul li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+}
+
+/* Prediction Section */
+.prediction-section {
+  background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%);
+  padding: 8rem 2rem;
+}
+
+.prediction-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.prediction-content {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 6rem;
+  align-items: center;
+  background: white;
+  border-radius: 2rem;
+  padding: 5rem;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+}
+
+.prediction-chart {
   display: flex;
   justify-content: center;
+  align-items: center;
 }
-  /* next text and image side by side content*/
-  /* Data Container */
 
-  .datacontainer{
-    /* overflow:scroll ; */
-    display: flex;
-    border: .2rem solid black;
-    width: 100%;
-    background-color: rgb(235, 235, 220);
-    /* margin-top: 100px; */
-    padding: 5rem;
-  }
-  .piechartcss{
-    width: 10rem;
-    /* margin: 20rem; */
-    padding: 5rem;
-  }
-.text-head{
-  font-family: 'Anton', sans-serif;
-  font-stretch: expanded;
-  font-size:x-large;
-  /* font-style:oblique; */
-  line-height: 3.5rem;
+.prediction-title {
+  font-size: 3.2rem;
+  font-weight: 700;
+  color: #1a202c;
+  margin-bottom: 2rem;
+  line-height: 1.2;
 }
-  .text-container{
-    padding: 3rem;
-    font-size: 1.5rem;
+
+.prediction-description {
+  font-size: 1.6rem;
+  line-height: 1.8;
+  color: #4a5568;
+  margin-bottom: 3rem;
+}
+
+.prediction-features {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  font-size: 1.5rem;
+  color: #2d3748;
+}
+
+.feature-item svg {
+  color: #667eea;
+  flex-shrink: 0;
+}
+
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem 3rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 0.8rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.cta-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+}
+
+.cta-button svg {
+  transition: transform 0.3s ease;
+}
+
+.cta-button:hover svg {
+  transform: translateX(5px);
+}
+
+/* Contact and About sections */
+#contact,
+#about {
+  margin-top: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  html {
+    font-size: 58%;
   }
-  /* .text-Contant{
-    font-size: 16rem;
-  } */
-  
-  .image1{
-    height: 30rem;
+
+  .hero-title {
+    font-size: 3.5rem;
   }
 
-  .image2{
-    height: 30rem;
-  }
-  .image3{
-    height: 30rem;
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
   }
 
-
-
-  /* Contact & about us page */
-  #contact{
-    background-color: rgb(165 128 0 / 10%);
-    padding: 20rem;
+  .content-card,
+  .content-card.reverse {
+    grid-template-columns: 1fr;
+    gap: 4rem;
   }
 
-  #about{
-    background-color: black;
-    color: white;
-    font-family: 'Assistant','Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    padding: 20rem;
+  .prediction-content {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+    padding: 4rem 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 55%;
   }
 
-
-  /* Learn more button */
-  button {
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
-    outline: none;
-    border: 0;
-    vertical-align: middle;
-    text-decoration: none;
-    background: transparent;
-    padding: 0;
-    font-size: inherit;
-    font-family: inherit;
-   }
-   
-   button.learn-more {
-    width: 12rem;
-    height: 2.5rem;
-   }
-   
-   button.learn-more .circle {
-    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
-    position: relative;
-    display: block;
-    margin: 0;
-    width: 3rem;
-    height: 3rem;
-    background: #282936;
-    border-radius: 1.625rem;
-   }
-   
-   button.learn-more .circle .icon {
-    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    margin: auto;
-    background: #fff;
-   }
-   
-   button.learn-more .circle .icon.arrow {
-    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
-    left: 0.625rem;
-    width: 1.125rem;
-    height: 0.125rem;
-    background: none;
-   }
-   
-   button.learn-more .circle .icon.arrow::before {
-    position: absolute;
-    content: "";
-    top: -0.29rem;
-    right: 0.0625rem;
-    width: 0.625rem;
-    height: 0.625rem;
-    border-top: 0.125rem solid #fff;
-    border-right: 0.125rem solid #fff;
-    transform: rotate(45deg);
-   }
-   
-   button.learn-more .button-text {
-    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
-    position: absolute;
-    top: 0;
-    left: 0.20rem;
-    right: 0;
-    bottom: 0;
-    padding: .2rem 0;
-    margin: 0 -1.4rem 0 2.5rem;
-    color: #282936;
-    font-weight: 700;
-    line-height: 1.9;
-    text-align: center;
-    text-transform: uppercase;
-   }
-   
-   button:hover .circle {
-    width: 120%;
-   }
-   
-   button:hover .circle .icon.arrow {
-    background: #fff;
-    transform: translate(1rem, 0);
-   }
-   
-   button:hover .button-text {
-    color: #fff;
-   }
-
-  /* @media(min-width:1900px){
-    html{ 
-      font-size: 255%;
-
-    }
-  } */
-  @media(min-width:1600px){
-    html{ 
-      font-size: 75%;
-
-    }
+  .hero-stats {
+    padding: 4rem 1.5rem;
   }
-  @media(max-width:412px){
-    html{ 
-      font-size: 50%;
 
-    }
+  .hero-title {
+    font-size: 3rem;
   }
-  @media(max-width:380px){
-    html{ 
-      font-size: 50%;
 
-    }
+  .hero-subtitle {
+    font-size: 1.6rem;
   }
-  @media(max-width:300px){
-    html{ 
-      font-size: 30%;
 
-    }
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
   }
-  @media(max-width:200px){
-    html{ 
-      font-size: 20%;
 
-    }
+  .info-section {
+    padding: 5rem 1.5rem;
   }
-  @media(max-width:140px){
-    html{ 
-      font-size: 10%;
 
-    }
+  .section-title {
+    font-size: 2.8rem;
   }
+
+  .challenge-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .impact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .prediction-section {
+    padding: 5rem 1.5rem;
+  }
+
+  .prediction-content {
+    padding: 3rem 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  html {
+    font-size: 50%;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .stat-number {
+    font-size: 3.5rem;
+  }
+
+  .section-title {
+    font-size: 2.4rem;
+  }
+
+  .prediction-title {
+    font-size: 2.4rem;
+  }
+}

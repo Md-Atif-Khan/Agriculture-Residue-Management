@@ -1,4 +1,4 @@
-/* Login Form Styles - Matching Modern Purple Gradient Theme */
+/* Signup Form Styles - Matching Modern Purple Gradient Theme */
 
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Poppins:wght@400;500;600&display=swap');
 
@@ -10,28 +10,22 @@
 body {
   background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%);
   min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
-.centerL {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-  max-width: 450px;
+.centerS,
+#Xbox.centerS {
+  margin-top: 25px;
+  width: 450px;
   background: white;
   border-radius: 1rem;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   border: 1px solid #e2e8f0;
-  z-index: 10;
-  margin-top: 5rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.centerL h1 {
+.centerS h1 {
   text-align: center;
   padding: 2rem 1.5rem;
   margin: 0;
@@ -42,7 +36,7 @@ body {
   letter-spacing: -0.3px;
 }
 
-.centerL form {
+.centerS form {
   padding: 2.5rem 2.5rem 2rem 2.5rem;
 }
 
@@ -138,7 +132,7 @@ form .txt_field {
 }
 
 input[type="submit"],
-.Login {
+.Create {
   width: 100%;
   height: auto;
   min-height: 50px;
@@ -156,27 +150,28 @@ input[type="submit"],
   display: inline-block;
   text-align: center;
   text-decoration: none;
+  margin: 0;
 }
 
 input[type="submit"]:hover,
-.Login:hover {
+.Create:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
   background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
 }
 
 input[type="submit"]:active,
-.Login:active {
+.Create:active {
   transform: translateY(0);
   box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
 }
 
-.Login:disabled {
+.Create:disabled {
   pointer-events: none;
   opacity: 0.6;
 }
 
-.signup_link {
+.login_link {
   margin: 2rem 0 0 0;
   text-align: center;
   font-size: 0.95rem;
@@ -184,41 +179,62 @@ input[type="submit"]:active,
   padding-bottom: 0.5rem;
 }
 
-.signup_link a {
+.login_link a {
   color: #667eea;
   text-decoration: none;
   font-weight: 600;
   transition: color 0.2s ease;
 }
 
-.signup_link a:hover {
+.login_link a:hover {
   color: #764ba2;
   text-decoration: underline;
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
-  .centerL {
-    width: 90%;
-    margin: 0 auto;
+@media (min-width: 1600px) {
+  .centerS,
+  #Xbox.centerS {
+    max-width: 450px;
   }
 
-  .centerL form {
+  .centerS h1 {
+    font-size: 2rem;
+  }
+
+  .txt_field input,
+  .txt_field .custom-select {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .centerS,
+  #Xbox.centerS {
+    width: 90%;
+    max-width: 450px;
+    margin: 10rem auto 2rem auto;
+  }
+
+  .centerS form {
     padding: 2rem 1.5rem;
   }
 
-  .centerL h1 {
+  .centerS h1 {
     font-size: 1.5rem;
     padding: 1.5rem 1rem;
   }
 }
 
 @media (max-width: 480px) {
-  .centerL {
+  .centerS,
+  #Xbox.centerS {
     width: 95%;
+    max-width: 450px;
+    margin: 10rem auto 1.5rem auto;
   }
 
-  .centerL form {
+  .centerS form {
     padding: 1.5rem 1.25rem;
   }
 
@@ -226,5 +242,9 @@ input[type="submit"]:active,
   .txt_field .custom-select {
     font-size: 0.95rem;
     padding: 0.875rem 1rem;
+  }
+
+  .centerS h1 {
+    font-size: 1.35rem;
   }
 }

@@ -17,23 +17,24 @@ const ClearReqForm = () => {
   const ClearRequest = async (e) => {
     e.preventDefault();
 
-    setClearedList({ email: SerData.email, tResidue: ClearedList.tResidue, tgrain: ClearedList.tgrain, sdate: ClearedList.sdate });
-    const data = await axios.post('http://localhost:8000/ClearReqForm', {
-      email: ClearedList.email,
-      tResidue: ClearedList.tResidue,
-      tgrain: ClearedList.tgrain,
-      sdate: ClearedList.sdate
-    });
-    //   if( LoginA){
-    if (data.data.success) {
-      showAlert(data.data.message, 'success');
-      // setClearedList(data.data.data);
-      // localStorage.setItem("userLogin",JSON.stringify(data.data.data));
-      navigate('/AdminHome');
-    } else {
-      showAlert(data.data.message, 'danger');
+    try {
+      const data = await axios.post('http://localhost:8000/ClearReqForm', {
+        email: SerData.email,
+        tResidue: ClearedList.tResidue,
+        tgrain: ClearedList.tgrain,
+        sdate: ClearedList.sdate
+      });
+
+      if (data.data.success) {
+        showAlert(data.data.message, 'success');
+        navigate('/AdminHome');
+      } else {
+        showAlert(data.data.message, 'danger');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      showAlert(error.response?.data?.message || 'Failed to submit the form. Please try again.', 'danger');
     }
-    // }
   }
 
   let name, value;

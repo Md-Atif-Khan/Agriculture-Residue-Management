@@ -1,124 +1,227 @@
-@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Assistant&display=swap');
+/* Complete Request Form Styles - Matching Modern Purple Gradient Theme */
 
-html{
-    font-size: 62.5%;
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Poppins:wght@400;500;600&display=swap');
+
+* {
+  font-family: "Poppins", sans-serif;
+  box-sizing: border-box;
 }
 
-
+body {
+  background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%);
+  min-height: 100vh;
+  padding: 10rem 1rem 2rem 1rem;
+}
 
 .cardforlist {
-    /* width: 45rem;
-    height: 53.4rem; */
-    margin: 0rem auto;
-    background-color: #f0f8ea;
-    border-radius: 1.8rem;
-    z-index: 1;
-   }
-   
-   .card_content{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* width: 20%; */
-   }
-   .tools {
-    display: flex;
-    align-items: center;
-    padding: 1rem;
-   }
-   
-   /* .circle {
-    padding: 0 .1rem;   
-   } */
-   
-   .box {
-    display: inline-block;
-    align-items: center;
-    /* width: 1rem;
-    height: 1rem;
-    padding: 1rem;    */
-    border-radius: 50%;
-   }
-   
-   .red {
-    color: #ff605c;
-    font-size: 1.6rem;
-   }
+  width: 450px;
+  margin: 0 auto 2rem auto;
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+}
 
+.card_content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-   .card14 {
-    /* padding-left: 40%; */
-    margin-left: 30%;
-    width: 30rem;
-    background-color: #fff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    border-radius: 1rem;
-    overflow: hidden;
+.tools {
+  display: flex;
+  align-items: center;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.circle button {
+  background: white;
+  border: 2px solid #667eea;
+  padding: 0.625rem 1.25rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.circle button:hover {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.circle button:hover .box {
+  color: white;
+}
+
+.box {
+  color: #667eea;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.red {
+  color: #667eea;
+}
+
+.header2 {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2d3748;
+  padding: 2rem 2rem 1rem 2rem;
+  background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+  border-bottom: 2px solid #e2e8f0;
+  letter-spacing: -0.3px;
+}
+
+.body2 {
+  padding: 2rem 2.5rem;
+}
+
+.req {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+  border-radius: 0.5rem;
+  border: 1px solid #e2e8f0;
+  transition: all 0.2s ease;
+}
+
+.req:hover {
+  background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+  border-color: #cbd5e0;
+  transform: translateX(5px);
+}
+
+.req-name {
+  flex: 1;
+  font-size: 1rem;
+  color: #2d3748;
+  font-weight: 500;
+}
+
+.req-name p {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.req-name p strong {
+  color: #667eea;
+}
+
+.Fulfill {
+  padding: 0.875rem 1.75rem;
+  border: none;
+  border-radius: 0.5rem;
+  color: white;
+  background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+  position: relative;
+  font-weight: 600;
+  font-size: 1rem;
+  box-shadow: 0 4px 12px rgba(72, 187, 120, 0.3);
+  transition: all 0.3s ease;
+  overflow: hidden;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.Fulfill:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(72, 187, 120, 0.4);
+  background: linear-gradient(135deg, #38a169 0%, #48bb78 100%);
+}
+
+.Fulfill:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 12px rgba(72, 187, 120, 0.3);
+}
+
+/* Responsive Design */
+@media (min-width: 1600px) {
+  .cardforlist {
+    width: 450px;
   }
-  
+
   .header2 {
-    /* background-color: #333; */
-    /* color: #fff; */
-    /* padding: 20px; */
-    text-align: center;
-    font-size: 1.8rem;
+    font-size: 1.65rem;
   }
-  
-  .body2 {
-    padding: 2rem;
-  }
-  
-  .req {
-    display: flex;
-    align-items: center;
-    margin-bottom: 2rem;
-  }
-  
+
   .req-name {
-    /* width: 22rem; */
-    font-size: 16px;
+    font-size: 1.05rem;
   }
-  
-  
-  
-  
-  
+}
+
+@media (max-width: 768px) {
+  .cardforlist {
+    width: 90%;
+    margin: 1rem auto;
+  }
+
+  .body2 {
+    padding: 1.5rem 1.5rem;
+  }
+
+  .header2 {
+    font-size: 1.35rem;
+    padding: 1.5rem 1.5rem 1rem 1.5rem;
+  }
+
+  .req {
+    padding: 0.875rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .req-name {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .cardforlist {
+    width: 95%;
+    margin: 0.5rem auto;
+  }
+
+  .tools {
+    padding: 1rem;
+  }
+
+  .body2 {
+    padding: 1.25rem 1rem;
+  }
+
+  .header2 {
+    font-size: 1.2rem;
+    padding: 1.25rem 1rem 0.75rem 1rem;
+  }
+
+  .req {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0.75rem;
+  }
+
+  .req-name {
+    font-size: 0.9rem;
+  }
+
   .Fulfill {
-    padding: 15px 25px;
-    border: unset;
-    border-radius: 15px;
-    color: #212121;
-    z-index: 1;
-    background: #e8e8e8;
-    position: relative;
-    font-weight: 1000;
-    font-size: 17px;
-    -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
-    box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
-    transition: all 250ms;
-    overflow: hidden;
-   }
-   
-   .Fulfill button::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 0;
-    border-radius: 15px;
-    background-color: #212121;
-    z-index: -1;
-    -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
-    box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
-    transition: all 250ms
-   }
-   
-  .Fulfill button:hover {
-    color: #e8e8e8;
-   }
-   
-  .Fulfill button:hover::before {
-    width: 100%;
-   }
+    padding: 0.75rem 1.5rem;
+    font-size: 0.95rem;
+  }
+
+  .circle button {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+}

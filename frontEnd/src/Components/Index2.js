@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 import Home from './HomePage/Home';
 import Navbar from './Navbar/Navbar';
-import Research from './homeComponent/ResearchPage/Research'
+import Research from './HomeComponents/ResearchPage/Research'
 import OptionSignup from './OptionPage/OptionSignup';
 import OptionLogin from './OptionPage/OptionLogin';
 import Login from './LoginPage/Login';
@@ -10,16 +10,17 @@ import Forget from './LoginPage/Forget';
 import Profile from './ProfilePage/Profile';
 import Register from './SignupPage/Register';
 import FarmerHome from './LogHomePage/FarmerHome';
-import CompanyHomeNew from './LogHomePage/CompanyHomeNew';
+import CompanyHomeNew from './LogHomePage/CompanyHomePage/CompanyHome';
 import AdminHome from './LogHomePage/AdminHomePage/AdminHome';
 import Service from './ServicePage/Service';
-import AuctionRoom from './NewAuction/AuctionRoom';
+import AuctionRoom from './Auction/AuctionRoom';
 import CompleteRequest from './LogHomePage/AdminHomePage/FulfillRequestForm/CompleteRequest'
 import ClearReqForm from './LogHomePage/AdminHomePage/FulfillRequestForm/ClearReqForm'
 import CreateRoom from './LogHomePage/AdminHomePage/Roomform';
 import SuccessPage from './ServicePage/SuccessPage';
 import Alert from './Alert';
 import DeepContext from '../context/DeepContext';
+import Footer from '../Components/Footer/Footer';
 import axios from 'axios'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -73,6 +74,7 @@ const Index2 = () => {
         {/* <DeepState> */}
           <Navbar />
           <Alert />
+          <div className="page-wrapper">
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/OptionSignup' element={<OptionSignup />} />
@@ -94,14 +96,7 @@ const Index2 = () => {
 
             <Route path='/CompleteRequest' element={<CompleteRequest />} />
             <Route path='/ClearReqForm' element={<ClearReqForm />} />
-
-
-            {/* This route is for the admin to see auction details which is not required any more as is taken care by the AuctionRoom component */}
-            {/* <Route path='/ShowAuction' element={<ShowAuction />} />  */}
-
-            {/* <Route path='/Auction' element={<Auction />} />
-            <Route path='/AuctionList' element={<AuctionList />} /> */}
-
+            
             <Route
               path="/auction/:roomId"
               element={
@@ -117,7 +112,7 @@ const Index2 = () => {
                 </PrivateRoute>
               }
             />
-            {/* <Route path='/Service' element={<Service />} /> */}
+            {/* <Route path='/Service' element={<Service />}></Route> */}
 
             <Route path='/CreateRoom' element={<CreateRoom />} />
 
@@ -126,6 +121,8 @@ const Index2 = () => {
             <Route path='/Forget' element={<Forget />} />
             <Route path='/Research' element={<Research />} />
           </Routes>
+          </div>
+          <Footer />
         {/* </DeepState> */}
       </Router>
     </>
