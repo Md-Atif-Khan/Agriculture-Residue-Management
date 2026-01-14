@@ -14,15 +14,14 @@ body {
 
 .centerS,
 #Xbox.centerS {
-  width: 100% !important;
-  max-width: 450px !important;
+  width: 450px;
   background: white;
   border-radius: 1rem;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   border: 1px solid #e2e8f0;
-  margin-left: auto !important;
-  margin-right: auto !important;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .centerS h1 {
@@ -195,7 +194,7 @@ input[type="submit"]:active,
 @media (min-width: 1600px) {
   .centerS,
   #Xbox.centerS {
-    max-width: 450px !important;
+    max-width: 450px;
   }
 
   .centerS h1 {
@@ -211,9 +210,9 @@ input[type="submit"]:active,
 @media (max-width: 768px) {
   .centerS,
   #Xbox.centerS {
-    width: 90% !important;
-    max-width: 450px !important;
-    margin: 10rem auto 2rem auto !important;
+    width: 90%;
+    max-width: 450px;
+    margin: 10rem auto 2rem auto;
   }
 
   .centerS form {
@@ -229,9 +228,9 @@ input[type="submit"]:active,
 @media (max-width: 480px) {
   .centerS,
   #Xbox.centerS {
-    width: 95% !important;
-    max-width: 450px !important;
-    margin: 10rem auto 1.5rem auto !important;
+    width: 95%;
+    max-width: 450px;
+    margin: 10rem auto 1.5rem auto;
   }
 
   .centerS form {
