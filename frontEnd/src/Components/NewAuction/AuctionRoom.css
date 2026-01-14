@@ -224,8 +224,10 @@ body {
 
 .auction-bid-row {
   display: flex;
-  align-items: center;
-  gap: 1rem;
+  align-items: stretch;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
 }
 
 .auction-bid-input-group {
@@ -234,8 +236,9 @@ body {
   background: white;
   border-radius: 0.5rem;
   border: 2px solid #e2e8f0;
-  padding: 0.5rem 1rem;
+  padding: 0.75rem 1rem;
   flex: 1;
+  min-width: 200px;
   transition: all 0.2s ease;
 }
 
@@ -249,7 +252,15 @@ body {
   font-size: 1rem;
   color: #667eea;
   font-weight: 700;
-  margin: 0 0.5rem;
+  flex-shrink: 0;
+}
+
+.auction-bid-currency {
+  margin-right: 0.5rem;
+}
+
+.auction-bid-unit {
+  margin-left: 0.5rem;
 }
 
 .auction-bid-input {
@@ -257,19 +268,25 @@ body {
   outline: none;
   font-size: 1.1rem;
   font-weight: 600;
-  width: 100%;
-  padding: 0.25rem;
-  background: transparent;
+  flex: 1;
+  min-width: 80px;
+  padding: 0.5rem;
+  background: white;
   color: #2d3748;
 }
 
 .auction-bid-input::placeholder {
-  color: #cbd5e0;
+  color: #a0aec0;
   font-weight: 400;
+}
+
+.auction-bid-input:focus {
+  background: white;
 }
 
 .auction-bid-btn {
   flex-shrink: 0;
+  min-width: 120px;
 }
 
 /* Bid History */
@@ -421,6 +438,10 @@ body {
   .auction-history-list {
     max-height: 300px;
   }
+
+  .auction-bid-input-group {
+    min-width: 180px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -458,11 +479,18 @@ body {
   .auction-bid-row {
     flex-direction: column;
     align-items: stretch;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .auction-bid-input-group {
+    min-width: 100%;
   }
 
   .auction-bid-btn {
     width: 100%;
     justify-content: center;
+    min-width: 100%;
   }
 }
 
@@ -479,8 +507,22 @@ body {
     border-radius: 0.75rem;
   }
 
+  .auction-bid-form {
+    padding: 1rem;
+  }
+
+  .auction-bid-input-group {
+    padding: 0.75rem;
+  }
+
   .auction-bid-input {
     font-size: 1rem;
+    padding: 0.5rem 0.25rem;
+  }
+
+  .auction-bid-currency,
+  .auction-bid-unit {
+    font-size: 0.9rem;
   }
 
   .auction-timer {
@@ -489,8 +531,12 @@ body {
   }
 
   .auction-btn {
-    padding: 0.6rem 1.2rem;
-    font-size: 0.9rem;
+    padding: 0.75rem 1.2rem;
+    font-size: 0.95rem;
+  }
+
+  .auction-bid-btn {
+    padding: 0.875rem 1rem;
   }
 }
 

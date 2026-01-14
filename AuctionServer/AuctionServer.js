@@ -60,6 +60,8 @@ const io = new Server(AuctionServer, {
 
 const auctionTimers = {};
 const roomParticipants = {}; // Track online participants per room
+const endingAuctions = new Set(); // Track auctions currently being ended to prevent duplicates
+const MAX_TIMEOUT = 2147483647; // JavaScript setTimeout max safe value (about 24.8 days)
 
 // Get actual participant count from database
 async function getParticipantCount(roomCode) {
@@ -72,6 +74,42 @@ async function getParticipantCount(roomCode) {
         return 0;
     }
 }
+
+// Periodic cleanup function to check and end expired auctions
+async function checkAndEndExpiredAuctions() {
+    try {
+        const currentTime = Date.now();
+
+        // Find all rooms that have expired
+        const expiredRooms = await RoomModel.find({
+            endDate: { $lt: new Date(currentTime) }
+        });
+
+        if (expiredRooms.length > 0) {
+            console.log(`Found ${expiredRooms.length} expired auction(s) to clean up`);
+
+            for (const room of expiredRooms) {
+                console.log(`Ending expired auction: ${room.name} (code: ${room.code})`);
+
+                // Emit auction_ended event to all connected clients in this room
+                io.to(room.code).emit("auction_ended");
+
+                // End the auction and clean up
+                await endAuction(room.code);
+            }
+        }
+    } catch (err) {
+        console.error('Error in periodic auction cleanup:', err);
+    }
+}
+
+// Run cleanup immediately on server start
+checkAndEndExpiredAuctions();
+
+// Set up periodic cleanup - run every 5 minutes (300000 ms)
+const CLEANUP_INTERVAL = 5 * 60 * 1000; // 5 minutes
+setInterval(checkAndEndExpiredAuctions, CLEANUP_INTERVAL);
+console.log(`Periodic auction cleanup scheduled to run every ${CLEANUP_INTERVAL / 60000} minutes`);
 
 io.on('connection', (socket) => {
     console.log("A user is Connected", socket.id);
@@ -117,27 +155,48 @@ io.on('connection', (socket) => {
             
             socket.emit("startDetails", room);
 
+            // Convert both dates to UTC timestamps for accurate comparison
             const endTime = new Date(room.endDate).getTime();
-            const currentTime = new Date().getTime();
+            const currentTime = Date.now();
+
+            // Debug logging
+            console.log(`Room ${data.code} date comparison:`, {
+                endDate: room.endDate,
+                endTime: endTime,
+                currentTime: currentTime,
+                endDateString: new Date(room.endDate).toISOString(),
+                currentDateString: new Date(currentTime).toISOString(),
+                hasEnded: currentTime >= endTime
+            });
 
             if (currentTime >= endTime) {
                 console.log("Auction already ended for room:", data.code);
                 socket.emit("auction_ended");
+                // Clean up this expired auction
+                await endAuction(data.code);
             } else {
                 const timeLeft = endTime - currentTime;
                 console.log(`Auction time remaining for room ${data.code}: ${Math.floor(timeLeft/1000/60)} minutes`);
-                
+
                 // Send time remaining to client
                 socket.emit("time_remaining", timeLeft);
-                
+
+                // Clear any existing timer for this room
                 if (auctionTimers[data.code]) {
                     clearTimeout(auctionTimers[data.code]);
                 }
-                auctionTimers[data.code] = setTimeout(() => {
-                    console.log(`Auction timer ended for room ${data.code}`);
-                    io.to(data.code).emit("auction_ended");
-                    endAuction(data.code);
-                }, timeLeft);
+
+                // Only set setTimeout if auction ends within safe timeout period (24.8 days)
+                if (timeLeft <= MAX_TIMEOUT) {
+                    auctionTimers[data.code] = setTimeout(() => {
+                        console.log(`Auction timer ended for room ${data.code}`);
+                        io.to(data.code).emit("auction_ended");
+                        endAuction(data.code);
+                    }, timeLeft);
+                    console.log(`Timer set for room ${data.code} to end in ${Math.floor(timeLeft/1000/60)} minutes`);
+                } else {
+                    console.log(`Auction for room ${data.code} ends in ${Math.floor(timeLeft/1000/60/60/24)} days - will be handled by periodic cleanup`);
+                }
             }
 
             let startingBid = await AuctionModel.findOne({ room: data.code });
@@ -191,8 +250,20 @@ io.on('connection', (socket) => {
             return;
         }
 
-        // Check if auction is still active
-        if (new Date() >= new Date(room.endDate)) {
+        // Check if auction is still active using UTC timestamps
+        const currentTime = Date.now();
+        const endTime = new Date(room.endDate).getTime();
+
+        console.log(`Bid validation for room ${data.code}:`, {
+            currentTime: currentTime,
+            endTime: endTime,
+            currentDateString: new Date(currentTime).toISOString(),
+            endDateString: new Date(room.endDate).toISOString(),
+            hasEnded: currentTime >= endTime
+        });
+
+        if (currentTime >= endTime) {
+            console.log(`Bid rejected: auction has ended for room ${data.code}`);
             socket.emit("error_bid", { message: "This auction has ended" });
             return;
         }
@@ -290,19 +361,28 @@ app.get('/api/rooms/join', async (req, res) => {
 
 // Better auction end function with cleanup
 async function endAuction(roomCode) {
+    // Prevent duplicate end processes for the same room
+    if (endingAuctions.has(roomCode)) {
+        console.log(`Auction ${roomCode} is already being ended, skipping duplicate`);
+        return;
+    }
+
     console.log(`Ending auction for room ${roomCode}`);
-    
+    endingAuctions.add(roomCode);
+
+    // Clear any existing timer
     if (auctionTimers[roomCode]) {
         clearTimeout(auctionTimers[roomCode]);
         delete auctionTimers[roomCode];
         console.log(`Cleared timer for room ${roomCode}`);
     }
-    
+
     try {
         // Get room details
         const room = await RoomModel.findOne({ code: roomCode });
         if (!room) {
-            console.error(`Room ${roomCode} not found`);
+            console.log(`Room ${roomCode} not found (may have already been cleaned up)`);
+            endingAuctions.delete(roomCode);
             return;
         }
 
@@ -369,6 +449,9 @@ async function endAuction(roomCode) {
     } catch (err) {
         console.error(`Error in endAuction for room ${roomCode}:`, err);
         io.to(roomCode).emit('auction_error', { message: 'Error determining auction winner' });
+    } finally {
+        // Always remove from tracking set when done
+        endingAuctions.delete(roomCode);
     }
 }
 

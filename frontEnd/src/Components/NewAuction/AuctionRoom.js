@@ -74,6 +74,8 @@ const AuctionRoom = () => {
         setTimeRemaining(prev => {
           if (prev <= 1000) {
             clearInterval(timerRef.current);
+            setIsAuctionEnded(true);
+            setError('This auction has ended');
             return 0;
           }
           const newTime = prev - 1000;
@@ -120,14 +122,6 @@ const AuctionRoom = () => {
       setAuction(roomData);
       setLoading(false);
 
-      // Check if auction has already ended
-      const endTime = new Date(roomData.endDate).getTime();
-      const currentTime = new Date().getTime();
-      if (currentTime >= endTime) {
-        setIsAuctionEnded(true);
-        setError('This auction has ended');
-      }
-
       if (roomData.startBid) {
         setBidAmount((parseInt(roomData.startBid) + 10).toString());
       }
@@ -150,6 +144,12 @@ const AuctionRoom = () => {
     newSocket.on('time_remaining', (timeLeft) => {
       setTimeRemaining(timeLeft);
       setFormattedTimeRemaining(formatTimeRemaining(timeLeft));
+
+      // If time remaining is 0 or negative, mark auction as ended
+      if (timeLeft <= 0) {
+        setIsAuctionEnded(true);
+        setError('This auction has ended');
+      }
     });
     
     // Update participant count

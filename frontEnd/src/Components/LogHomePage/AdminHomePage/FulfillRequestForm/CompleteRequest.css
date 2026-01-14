@@ -14,7 +14,7 @@ body {
 }
 
 .cardforlist {
-  max-width: 450px;
+  width: 450px;
   margin: 0 auto 2rem auto;
   background: white;
   border-radius: 1rem;
@@ -147,9 +147,24 @@ body {
 }
 
 /* Responsive Design */
+@media (min-width: 1600px) {
+  .cardforlist {
+    width: 450px;
+  }
+
+  .header2 {
+    font-size: 1.65rem;
+  }
+
+  .req-name {
+    font-size: 1.05rem;
+  }
+}
+
 @media (max-width: 768px) {
   .cardforlist {
-    margin: 1rem;
+    width: 90%;
+    margin: 1rem auto;
   }
 
   .body2 {
@@ -173,7 +188,8 @@ body {
 
 @media (max-width: 480px) {
   .cardforlist {
-    margin: 0.5rem;
+    width: 95%;
+    margin: 0.5rem auto;
   }
 
   .tools {

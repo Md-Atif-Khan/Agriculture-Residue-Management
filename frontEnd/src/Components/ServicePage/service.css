@@ -12,10 +12,10 @@ body {
   min-height: 100vh;
 }
 
-.center1 {
+.center1,
+#JB.center1 {
   margin: 10rem auto 3rem auto;
-  width: 100%;
-  max-width: 450px;
+  width: 450px;
   background: white;
   border-radius: 1rem;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
@@ -289,10 +289,26 @@ input[type="submit"]:active,
 }
 
 /* Responsive Design */
+@media (min-width: 1600px) {
+  .center1,
+  #JB.center1 {
+    width: 450px;
+  }
+
+  .center1 h1 {
+    font-size: 2rem;
+  }
+
+  .txt_field input {
+    font-size: 1.1rem;
+  }
+}
+
 @media (max-width: 768px) {
-  .center1 {
+  .center1,
+  #JB.center1 {
     width: 90%;
-    margin: 2rem auto;
+    margin: 10rem auto 2rem auto;
   }
 
   .center1 form {
@@ -310,9 +326,10 @@ input[type="submit"]:active,
 }
 
 @media (max-width: 480px) {
-  .center1 {
+  .center1,
+  #JB.center1 {
     width: 95%;
-    margin: 1.5rem auto;
+    margin: 10rem auto 1.5rem auto;
   }
 
   .center1 form {
