@@ -1,28 +1,29 @@
 /* Admin Dashboard Styles - Matching Company Dashboard Theme */
 
 .admin-dashboard {
-  max-width: 1400px;
+  max-width: 1600px;
   margin: 0 auto;
-  padding: 2rem 1.5rem 2rem 1.5rem;
+  padding: 3rem 4rem 4rem 4rem;
   min-height: 100vh;
   background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%);
 }
 
 /* Header Section */
 .admin-header {
-  margin-bottom: 2.5rem;
+  margin-bottom: 4rem;
+  text-align: center;
 }
 
 .admin-title {
-  font-size: 2.25rem;
-  font-weight: 700;
+  font-size: 3.5rem;
+  font-weight: 800;
   color: #1a202c;
-  margin-bottom: 0.5rem;
-  letter-spacing: -0.5px;
+  margin-bottom: 1rem;
+  letter-spacing: -1px;
 }
 
 .admin-subtitle {
-  font-size: 1rem;
+  font-size: 1.6rem;
   color: #718096;
   font-weight: 400;
 }
@@ -30,29 +31,30 @@
 /* Main Content Layout */
 .admin-content {
   display: grid;
-  grid-template-columns: 1fr 380px;
-  gap: 2rem;
+  grid-template-columns: 1fr 450px;
+  gap: 3rem;
 }
 
 /* Cards */
 .admin-card {
   background: white;
-  border-radius: 1rem;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  border-radius: 1.5rem;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
   overflow: hidden;
-  border: 1px solid #e2e8f0;
-  margin-bottom: 2rem;
+  border: 2px solid #e2e8f0;
+  margin-bottom: 3rem;
 }
 
 .admin-card:hover {
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
 }
 
 .admin-card-header {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
-  padding: 1.5rem;
+  padding: 2rem 2.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -67,13 +69,13 @@
 }
 
 .admin-card-title {
-  font-size: 1.35rem;
+  font-size: 1.8rem;
   font-weight: 700;
   margin: 0;
 }
 
 .admin-card-body {
-  padding: 1.5rem;
+  padding: 2.5rem;
 }
 
 /* Table Styles */
