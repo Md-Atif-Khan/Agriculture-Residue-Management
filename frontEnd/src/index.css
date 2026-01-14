@@ -2,9 +2,15 @@
   width: 100%;
 }
 
-body {
+html,
+body,
+#root {
+  height: 100%;
   margin: 0;
-  padding: 8rem 1rem 2rem 1rem;
+  padding: 0;
+}
+
+body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -13,6 +19,11 @@ body {
   background-color: whitesmoke;
   scroll-behavior: smooth;
   transition: all 0.5s ease-out;
+}
+
+/* Layout wrapper for sticky footer */
+.page-wrapper {
+  min-height: calc(100vh - 80px);
 }
 
 code {
