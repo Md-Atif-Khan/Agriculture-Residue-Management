@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import Contact from '../homeComponent/ContactUsPage/Contact'
-import Aboutus from '../homeComponent/AboutUs/Aboutus'
-import Carousel from '../homeComponent/CarouselPage/Carousel';
-import { countries } from '../homeComponent/CarouselPage/Data';
-import Piechart from '../homeComponent/piechart/Piechart';
-import Research from '../homeComponent/ResearchPage/Research';
+import Contact from '../HomeComponents/ContactUsPage/Contact'
+import Aboutus from '../HomeComponents/AboutUs/Aboutus'
+import Carousel from '../HomeComponents/CarouselPage/Carousel';
+import { countries } from '../HomeComponents/CarouselPage/Data';
+import Piechart from '../HomeComponents/Piechart/Piechart';
+import Research from '../HomeComponents/ResearchPage/Research';
 import './HomeStyle.css'
 
 const Home = () => {

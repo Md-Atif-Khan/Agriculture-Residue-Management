@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 import Home from './HomePage/Home';
 import Navbar from './Navbar/Navbar';
-import Research from './homeComponent/ResearchPage/Research'
+import Research from './HomeComponents/ResearchPage/Research'
 import OptionSignup from './OptionPage/OptionSignup';
 import OptionLogin from './OptionPage/OptionLogin';
 import Login from './LoginPage/Login';
