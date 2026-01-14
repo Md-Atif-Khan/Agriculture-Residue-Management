@@ -75,14 +75,12 @@ html{
   /* Contact & about us page */
   #contact{
     background-color: rgb(165 128 0 / 10%);
-    padding: 20rem;
   }
 
   #about{
     background-color: black;
     color: white;
     font-family: 'Assistant','Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    padding: 20rem;
   }
 
 

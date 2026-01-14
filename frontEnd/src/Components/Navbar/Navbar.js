@@ -33,7 +33,7 @@ function Navbar() {
                 <div className="navbar-logo" onClick={HomePage} style={{ cursor: 'pointer' }}>
                     <img src="../images/v914-ning-21a.jpg" className="company-logo" alt="" />
                     <strong className="Companyname">
-                        AgricultureTank
+                        AgroResidue
                     </strong>
                 </div>
                 <div className="navbar-right">

@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Contact from '../homeComponent/ContactUsPage/Contact'
 import Aboutus from '../homeComponent/AboutUs/Aboutus'
+import Footer from '../homeComponent/Footer/Footer'
 import Carousel from '../homeComponent/CarouselPage/Carousel';
 import { countries } from '../homeComponent/CarouselPage/Data';
 import Piechart from '../homeComponent/piechart/Piechart';
@@ -85,6 +86,8 @@ const Home = () => {
 
             </div>
 
+            {/* Footer */}
+            <Footer />
 
         </>
     )
