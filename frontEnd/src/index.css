@@ -24,6 +24,20 @@ body {
 /* Layout wrapper for sticky footer */
 .page-wrapper {
   min-height: calc(100vh - 80px);
+  padding-top: 80px;
+}
+
+/* Responsive padding adjustments to match navbar height */
+@media (max-width: 768px) {
+  .page-wrapper {
+    padding-top: 70px;
+  }
+}
+
+@media (max-width: 640px) {
+  .page-wrapper {
+    padding-top: 60px;
+  }
 }
 
 code {

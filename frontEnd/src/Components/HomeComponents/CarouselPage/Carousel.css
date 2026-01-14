@@ -17,7 +17,7 @@ html{
 
 .carousel {
     display: flex;
-    height: 60rem;
+    height: 68rem;
     width: 100%;
   }
   
@@ -66,15 +66,148 @@ html{
     position: absolute;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.7) 100%);
     display: flex;
-    padding: 0rem 3rem;
-    align-items: flex-end;
+    padding: 0rem 8rem;
+    align-items: center;
+    justify-content: center;
   }
-  
+
+  .card_content {
+    max-width: 900px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes zoomIn {
+    from {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
   .card_title {
     color: white;
-    font-size: 3rem;
+    font-size: 5.5rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin: 0;
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    letter-spacing: -1px;
+    text-align: center;
+    animation: fadeInDown 0.8s ease-out;
+  }
+
+  .card_subtitle {
+    color: #ffd700;
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 0;
+    text-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
+    letter-spacing: -0.5px;
+    text-align: center;
+    animation: fadeInDown 0.8s ease-out 0.1s both;
+  }
+
+  .card_description {
+    color: #ffffff;
+    font-size: 2rem;
+    line-height: 1.6;
+    margin: 0;
+    font-weight: 400;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+    max-width: 750px;
+    text-align: center;
+    animation: fadeInUp 0.8s ease-out 0.2s both;
+  }
+
+  .card_cta {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 1.8rem 4.5rem;
+    font-size: 1.7rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0;
+    margin-top: 1rem;
+    animation: zoomIn 0.8s ease-out 0.3s both;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card_cta::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+  }
+
+  .card_cta:hover::before {
+    width: 300px;
+    height: 300px;
+  }
+
+  .card_cta:hover {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.7);
+  }
+
+  .card_cta:active {
+    transform: translateY(-2px) scale(1.02);
   }
   
   .carousel_arrow_left,
@@ -83,7 +216,7 @@ html{
     font-size: 4rem;
     top: 50%;
     transform: translate(0, -50%);
-    background-color: gainsboro;
+    background: rgba(255, 255, 255, 0.9);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -92,6 +225,16 @@ html{
     border-radius: 50%;
     padding-bottom: 0.7rem;
     cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    color: #667eea;
+  }
+
+  .carousel_arrow_left:hover,
+  .carousel_arrow_right:hover {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    transform: translate(0, -50%) scale(1.1);
   }
   
   .carousel_arrow_left {
@@ -112,19 +255,179 @@ html{
   .pagination_dot {
     height: 1rem;
     width: 1rem;
-    background-color: #f5f5f5;
+    background: rgba(255, 255, 255, 0.5);
     border-radius: 50%;
     display: inline-block;
     margin-left: 1rem;
     cursor: pointer;
+    transition: all 0.3s ease;
   }
-  
+
   .pagination_dot:hover {
-    transform: scale(1.2);
+    transform: scale(1.3);
+    background: rgba(255, 255, 255, 0.8);
   }
-  
+
   .pagination_dot-active {
-    background-color: steelblue;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    width: 2.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.5);
+  }
+
+  /* Responsive Design */
+  @media (min-width: 1440px) {
+    .carousel {
+      height: 75rem;
+    }
+
+    .card_content {
+      max-width: 1000px;
+      gap: 2.5rem;
+    }
+
+    .card_title {
+      font-size: 6rem;
+    }
+
+    .card_subtitle {
+      font-size: 4.5rem;
+    }
+
+    .card_description {
+      font-size: 2.2rem;
+      max-width: 800px;
+    }
+
+    .card_cta {
+      padding: 2rem 5rem;
+      font-size: 1.8rem;
+    }
+  }
+
+  @media (max-width: 1200px) {
+    .card_content {
+      max-width: 750px;
+      gap: 1.5rem;
+    }
+
+    .card_title {
+      font-size: 4.8rem;
+    }
+
+    .card_subtitle {
+      font-size: 3.5rem;
+    }
+
+    .card_description {
+      font-size: 1.8rem;
+      max-width: 650px;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .card_overlay {
+      padding: 0rem 5rem;
+    }
+
+    .card_content {
+      max-width: 650px;
+      gap: 1.5rem;
+    }
+
+    .card_title {
+      font-size: 4.2rem;
+    }
+
+    .card_subtitle {
+      font-size: 3rem;
+    }
+
+    .card_description {
+      font-size: 1.7rem;
+      max-width: 580px;
+    }
+
+    .card_cta {
+      padding: 1.5rem 3.5rem;
+      font-size: 1.6rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .carousel {
+      height: 58rem;
+    }
+
+    .card_overlay {
+      padding: 0rem 3rem;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.85) 100%);
+    }
+
+    .card_content {
+      max-width: 100%;
+      gap: 1.2rem;
+    }
+
+    .card_title {
+      font-size: 3.5rem;
+    }
+
+    .card_subtitle {
+      font-size: 2.6rem;
+    }
+
+    .card_description {
+      font-size: 1.5rem;
+      max-width: 100%;
+    }
+
+    .card_cta {
+      padding: 1.4rem 3rem;
+      font-size: 1.5rem;
+      margin-top: 0.5rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .carousel {
+      height: 56rem;
+    }
+
+    .card_overlay {
+      padding: 0rem 2rem;
+      padding-bottom: 8rem;
+    }
+
+    .card_content {
+      gap: 1rem;
+    }
+
+    .card_title {
+      font-size: 2.8rem;
+    }
+
+    .card_subtitle {
+      font-size: 2.2rem;
+    }
+
+    .card_description {
+      font-size: 1.35rem;
+      line-height: 1.5;
+    }
+
+    .card_cta {
+      padding: 1.3rem 2.5rem;
+      font-size: 1.35rem;
+      margin-top: 0.5rem;
+    }
+
+    .carousel_arrow_left,
+    .carousel_arrow_right {
+      font-size: 3rem;
+      width: 2.5rem;
+      height: 2.5rem;
+    }
   }
 
   /* @media(min-width:1600px){
